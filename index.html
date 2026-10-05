@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>测地线与相对论（字幕版）｜从最短路径到弯曲时空，引力如何成为几何 ｜ Geodesics and Relativity</title>
+<meta name="description" content="测地线与相对论（字幕版）｜从最短路径到弯曲时空，引力如何成为几何 — 逐句点读、中英对照、AI 术语标注">
+<style>
+:root{
+  --bg:#fbfbfd; --fg:#1d1d1f; --muted:#6e6e73; --card:#ffffff; --line:#e5e5ea;
+  --accent:#0a84ff; --accent-soft:#eaf3ff; --hl:#fff3bf; --hl-line:#e8b931;
+  --term-bg:#f3ecff; --term-line:#8b5cf6; --active:#fef6c7;
+  --radius:14px; --maxw:880px;
+}
+html[data-theme="dark"]{
+  --bg:#111113; --fg:#e8e8ea; --muted:#98989d; --card:#1b1b1e; --line:#2c2c30;
+  --accent:#4da3ff; --accent-soft:#16283d; --hl:#5a4a00; --hl-line:#d9a800;
+  --term-bg:#241a3a; --term-line:#a78bfa; --active:#3a3200;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+}
+body[data-font="s"]{font-size:15px}
+body[data-font="l"]{font-size:18px}
+body[data-font="xl"]{font-size:20px}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(14px);
+  background:color-mix(in srgb, var(--bg) 82%, transparent);
+  border-bottom:1px solid var(--line);
+}
+.topbar-in{max-width:var(--maxw); margin:0 auto; padding:8px 16px; display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.brand{font-weight:650; font-size:.92em; letter-spacing:.2px; white-space:nowrap}
+.brand small{display:block; font-weight:400; color:var(--muted); font-size:.78em; letter-spacing:0}
+.bar-spacer{flex:1}
+.btn{
+  appearance:none; border:1px solid var(--line); background:var(--card); color:var(--fg);
+  border-radius:9px; padding:5px 10px; font-size:.82em; cursor:pointer; line-height:1.4;
+  font-family:inherit; transition:background .15s,border-color .15s;
+}
+.btn:hover{border-color:var(--accent); color:var(--accent)}
+.btn.on{background:var(--accent); border-color:var(--accent); color:#fff}
+.btn-group{display:flex; gap:6px; align-items:center}
+
+/* ---------- progress ---------- */
+.progress{height:3px; background:var(--line); position:relative}
+.progress i{display:block; height:100%; width:0; background:var(--accent); transition:width .2s}
+
+/* ---------- hero ---------- */
+main{max-width:var(--maxw); margin:0 auto; padding:26px 18px 120px}
+.hero{display:flex; gap:18px; align-items:flex-start; margin-bottom:8px}
+.hero img{width:190px; flex-shrink:0; border-radius:var(--radius); box-shadow:0 3px 14px rgba(0,0,0,.13)}
+.hero h1{font-size:1.42em; line-height:1.32; margin:0 0 8px; font-weight:650}
+.hero h1 .zh{display:block; font-size:.72em; color:var(--muted); font-weight:500; margin-top:6px}
+.meta{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 0}
+.chip{background:var(--card); border:1px solid var(--line); border-radius:999px; padding:3px 11px; font-size:.78em; color:var(--muted)}
+.chip b{color:var(--fg); font-weight:600}
+.summary{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; margin:20px 0}
+.summary h2{margin:0 0 10px; font-size:.86em; letter-spacing:.6px; text-transform:uppercase; color:var(--muted); font-weight:600}
+.summary p{margin:0 0 10px; font-size:.92em}
+.summary p:last-child{margin-bottom:0}
+.summary .en{color:var(--muted); font-size:.86em}
+
+/* ---------- toc ---------- */
+.toc{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:14px 18px; margin:18px 0}
+.toc h2{margin:0 0 8px; font-size:.86em; letter-spacing:.6px; text-transform:uppercase; color:var(--muted); font-weight:600}
+.toc ol{margin:0; padding-left:22px; columns:2; column-gap:26px}
+.toc li{margin:3px 0; font-size:.9em; break-inside:avoid}
+.toc a{color:var(--fg)}
+.toc a:hover{color:var(--accent)}
+.toc .t{color:var(--muted); font-size:.85em; margin-left:6px}
+
+/* ---------- toolbar ---------- */
+.toolbar{
+  display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  padding:11px 14px; margin:18px 0; position:sticky; top:52px; z-index:40;
+}
+.toolbar input[type=search]{
+  flex:1; min-width:150px; padding:6px 11px; border:1px solid var(--line); border-radius:9px;
+  background:var(--bg); color:var(--fg); font-family:inherit; font-size:.85em;
+}
+.toolbar input[type=search]:focus{outline:none; border-color:var(--accent)}
+.speed{display:flex; align-items:center; gap:5px; font-size:.8em; color:var(--muted)}
+select{background:var(--card); color:var(--fg); border:1px solid var(--line); border-radius:8px; padding:4px 7px; font-family:inherit; font-size:.9em}
+
+/* ---------- transcript ---------- */
+.chapter{margin:38px 0 0; padding-top:8px}
+.chapter h2{
+  font-size:1.06em; font-weight:650; margin:0 0 4px; padding:8px 0 8px 13px;
+  border-left:4px solid var(--accent); scroll-margin-top:110px;
+}
+.chapter .ct{color:var(--muted); font-size:.8em; font-weight:400; margin-left:9px}
+.row{display:flex; gap:12px; align-items:flex-start; padding:4px 0; border-radius:10px}
+.row[hidden]{display:none}
+.row:hover{background:color-mix(in srgb, var(--accent) 5%, transparent)}
+.row.active{background:var(--active); box-shadow:inset 3px 0 0 var(--hl-line)}
+.row.hit{background:var(--accent-soft)}
+.main-col{flex:1; min-width:0}
+.sent{display:flex; gap:9px; align-items:baseline; padding:6px 8px; border-radius:8px; cursor:pointer}
+.sent:hover .play{color:var(--accent); opacity:1}
+.play{
+  flex-shrink:0; width:26px;height:26px; border:1px solid var(--line); background:var(--card);
+  border-radius:50%; cursor:pointer; color:var(--muted); font-size:10px; line-height:1;
+  display:inline-flex; align-items:center; justify-content:center; padding:0;
+  transform:translateY(3px); transition:all .15s;
+}
+.play:hover{border-color:var(--accent); color:var(--accent)}
+.row.active .play{background:var(--hl-line); border-color:var(--hl-line); color:#fff}
+.txt{flex:1; min-width:0}
+.en{display:block}
+.zh{display:block; color:var(--muted); font-size:.9em; margin-top:2px}
+body[data-zh="off"] .zh{display:none}
+.ts{font-variant-numeric:tabular-nums; color:var(--muted); font-size:.76em; margin-right:2px; user-select:none}
+mark{
+  background:var(--hl); color:inherit; padding:1px 3px; border-radius:4px; cursor:help;
+  border-bottom:1.5px dotted var(--hl-line);
+}
+mark.term{background:var(--term-bg); border-bottom-color:var(--term-line)}
+.side{
+  width:210px; flex-shrink:0; background:var(--term-bg); border-left:3px solid var(--term-line);
+  border-radius:8px; padding:7px 11px; font-size:.78em; line-height:1.6; color:var(--fg);
+}
+.side .w{font-weight:650}
+.side .ph{color:var(--muted); font-size:.92em}
+.side .df{color:var(--muted); display:block; margin-top:2px}
+.side .cat{
+  display:inline-block; font-size:.86em; padding:0 6px; border-radius:6px;
+  background:var(--term-line); color:#fff; margin-top:4px;
+}
+.tooltip{
+  position:fixed; z-index:100; max-width:330px; background:var(--card); color:var(--fg);
+  border:1px solid var(--line); border-radius:11px; padding:11px 14px; font-size:.85em;
+  box-shadow:0 8px 30px rgba(0,0,0,.2); pointer-events:none; opacity:0; transition:opacity .13s;
+}
+.tooltip.show{opacity:1}
+.tooltip .w{font-weight:650; font-size:1.06em}
+.tooltip .ph{color:var(--muted)}
+.tooltip .df{display:block; margin-top:6px; line-height:1.6}
+
+/* ---------- vocab page bits ---------- */
+.vgroup{margin:26px 0}
+.vgroup h2{font-size:1em; border-left:4px solid var(--term-line); padding-left:11px; margin-bottom:10px}
+.vlist{display:grid; grid-template-columns:repeat(auto-fill,minmax(255px,1fr)); gap:9px}
+.vcard{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 13px}
+.vcard .w{font-weight:650}
+.vcard .ph{color:var(--muted); font-size:.85em}
+.vcard .df{display:block; color:var(--muted); font-size:.85em; margin-top:3px; line-height:1.55}
+.vcard .cn{color:var(--accent); font-size:.92em}
+
+/* ---------- misc ---------- */
+.kv{position:fixed; right:16px; bottom:16px; z-index:60; display:flex; flex-direction:column; gap:7px}
+.kv .btn{box-shadow:0 4px 14px rgba(0,0,0,.13)}
+.top{font-size:.8em}
+.note{color:var(--muted); font-size:.8em; text-align:center; margin-top:50px; line-height:1.7}
+@media (max-width:720px){
+  .hero{flex-direction:column}
+  .hero img{width:100%; max-width:290px}
+  .toc ol{columns:1}
+  .side{width:auto; margin:4px 0 8px 34px; border-left:none; border-top:3px solid var(--term-line)}
+  .row{flex-direction:column; gap:0}
+}
+@media print{
+  .topbar,.toolbar,.kv,.progress{display:none}
+  body{background:#fff; font-size:11pt}
+  .row{break-inside:avoid}
+  .side{border-left:2px solid #999}
+}
+</style>
+</head>
+<body data-font="m" data-zh="on">
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="brand">测地线与相对论（字幕版）｜从最短路径到弯曲时空，引力如何成为几何<small>英语学习 · 逐句点读</small></div>
+    <div class="bar-spacer"></div>
+    <div class="btn-group">
+      <button class="btn" id="b-zh" title="显示/隐藏中文 (T)">中文</button>
+      <button class="btn" id="b-auto" title="连播开关 (C)">连播</button>
+      <button class="btn" id="b-theme" title="深浅色">◐</button>
+      <button class="btn" id="b-font" title="字号">A</button>
+      <a class="btn" href="vocab.html" title="AI 术语表">术语表</a>
+    </div>
+  </div>
+  <div class="progress"><i id="prog"></i></div>
+</div>
+
+<main>
+  <section class="hero">
+    <img src="thumbnail.jpg" alt="课程缩略图">
+    <div>
+      <h1>Geodesics and Relativity<span class="zh">测地线与相对论（字幕版）｜从最短路径到弯曲时空，引力如何成为几何</span></h1>
+      <div class="meta">
+        <span class="chip">时长 <b>10:47</b></span>
+        <span class="chip">句数 <b>82</b></span>
+        <span class="chip">术语 <b>101</b></span>
+        <span class="chip">章节 <b>3</b></span>
+        <span class="chip" id="resume-chip" hidden>上次听到 <b id="resume-t">--:--</b></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="summary">
+    <h2>摘要</h2>
+    <p>本讲共 3 章，从「n. · n. 格子, 栅格」到「n. 奇异, 突出, 稀有 · n. 地平线」。全文 82 句、82 句已译成中文，标注了 101 个 AI 术语（主要集中在四级、六级、雅思）。</p>
+    <p class="en">3 chapters, 82 sentences (82 translated), 101 AI terms annotated. Built fully offline with opus-mt + local glossary.</p>
+  </section>
+
+  <nav class="toc">
+    <h2>章节目录</h2>
+    <ol><li><a href="#c0">n. · n. 格子, 栅格</a><span class="t">00:05</span></li>
+<li><a href="#c42">n. 常数, 恒量</a><span class="t">06:03</span></li>
+<li><a href="#c68">n. 奇异, 突出, 稀有 · n. 地平线</a><span class="t">09:08</span></li></ol>
+  </nav>
+
+  <div class="toolbar">
+    <input type="search" id="q" placeholder="搜索英文、中文或术语…">
+    <span class="speed">速度
+      <select id="rate">
+        <option value="0.75">0.75×</option>
+        <option value="1" selected>1×</option>
+        <option value="1.25">1.25×</option>
+        <option value="1.5">1.5×</option>
+        <option value="2">2×</option>
+      </select>
+    </span>
+    <span class="speed"><span id="hits">就绪</span></span>
+  </div>
+
+  <audio id="player" src="audio.mp3" preload="metadata"></audio>
+  <article id="transcript"><section class="chapter"><h2 id="c0">n. · n. 格子, 栅格<span class="ct">00:05</span></h2>
+<div class="row" id="r0"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">00:05</span> Welcome back to ScienceClick. Today, geodesics and <mark class="term" data-t="relativity">relativity</mark>.</span><span class="zh">欢迎回到科学闪烁节 今天是大地测量和相对论</span></span></div></div><div class="side"><span class="w">relativity</span> <span class="ph">[.relә'tiviti]</span><span class="df">n. 有关系, 相关性, 相对性 </span><span class="cat">四级 · 六级 · 考研</span></div></div>
+<div class="row" id="r1"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">00:11</span> What is the distance between these two points?</span><span class="zh">这两个点之间的距离是多少?</span></span></div></div></div>
+<div class="row" id="r2"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">00:15</span> We could take a <mark class="term" data-t="ruler">ruler</mark>, place it on the screen and read how many centimetres separate point A from point B.</span><span class="zh">我们可以用尺子,放在屏幕上 读取B点的A点</span></span></div></div><div class="side"><span class="w">ruler</span> <span class="ph">['ru:lә]</span><span class="df">n. 统治者, 管理者, 尺, 直尺 </span><span class="cat">四级 · 六级 · 考研</span></div></div>
+<div class="row" id="r3"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">00:22</span> We could also ask an <mark class="term" data-t="ant">ant</mark> to walk straight from one point to the other and count the number of <mark class="term" data-t="steps">steps</mark> it has to take.</span><span class="zh">我们还可以要求蚂蚁从一个点直走到另一个点,并计算它必须采取的步骤的数目。</span></span></div></div><div class="side"><span class="w">ant</span> <span class="ph">[ænt]</span><span class="df">n. 蚂蚁 </span><span class="cat">四级 · 考研</span></div><div class="side"><span class="w">steps</span> <span class="ph"></span><span class="df">n. （楼外的）台阶；步伐；步幅；步数 </span><span class="cat">雅思</span></div></div>
+<div class="row" id="r4"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">00:29</span> We measure the distance in centimetres in the first case and in number of <mark class="term" data-t="steps">steps</mark> in the second.</span><span class="zh">我们测量第一个案例的距离以厘米计,第二个案例的距离则以步骤数表示。</span></span></div></div><div class="side"><span class="w">steps</span> <span class="ph"></span><span class="df">n. （楼外的）台阶；步伐；步幅；步数 </span><span class="cat">雅思</span></div></div>
+<div class="row" id="r5"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">00:36</span> But imagine now that points A and B are on the surface of a <mark class="term" data-t="sphere">sphere</mark>. What is the distance between them now?</span><span class="zh">但是现在想象一下A点和B点在球体表面。它们之间的距离是多少?</span></span></div></div><div class="side"><span class="w">sphere</span> <span class="ph">[sfiә]</span><span class="df">n. 球, 球面, 球体, 天体, 地球仪, 范围 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div></div>
+<div class="row" id="r6"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">00:44</span> At first sight, we could take the <mark class="term" data-t="ruler">ruler</mark> again and place it between points A and B to measure how many centimetres separate them.</span><span class="zh">乍一看,我们可以再次使用标尺,将其置于A点和B点之间,以测量它们分开多少厘米。</span></span></div></div><div class="side"><span class="w">ruler</span> <span class="ph">['ru:lә]</span><span class="df">n. 统治者, 管理者, 尺, 直尺 </span><span class="cat">四级 · 六级 · 考研</span></div></div>
+<div class="row" id="r7"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">00:54</span> But if we ask the <mark class="term" data-t="ant">ant</mark> to walk from A to B, since it <mark class="term" data-t="remains">remains</mark> on the surface of the <mark class="term" data-t="sphere">sphere</mark>, it will follow a different path from the straight line <mark class="term" data-t="measured">measured</mark> by the ruler.</span><span class="zh">但如果我们要求蚂蚁从A到B行走, 因为蚂蚁仍然停留在球体表面, 它将沿着一条与尺子测量的直线不同的路径。</span></span></div></div><div class="side"><span class="w">ant</span> <span class="ph">[ænt]</span><span class="df">n. 蚂蚁 </span><span class="cat">四级 · 考研</span></div><div class="side"><span class="w">remains</span> <span class="ph">[ri'meins]</span><span class="df">n. 剩余物, 废墟, 残余 </span><span class="cat">四级 · 六级 · 考研 · GRE</span></div></div>
+<div class="row" id="r8"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">01:05</span> The <mark class="term" data-t="ant">ant</mark> must walk a greater distance because the <mark class="term" data-t="sphere">sphere</mark> is curved. It has to cover a whole <mark class="term" data-t="arc">arc</mark>. It does not measure the same distance as the <mark class="term" data-t="ruler">ruler</mark>.</span><span class="zh">蚂蚁必须走远一点, 因为球体被弯曲。 它必须覆盖整个弧。 它不能测量与标尺的距离 。</span></span></div></div><div class="side"><span class="w">ant</span> <span class="ph">[ænt]</span><span class="df">n. 蚂蚁 </span><span class="cat">四级 · 考研</span></div><div class="side"><span class="w">sphere</span> <span class="ph">[sfiә]</span><span class="df">n. 球, 球面, 球体, 天体, 地球仪, 范围 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div></div>
+<div class="row" id="r9"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">01:18</span> Our <mark class="term" data-t="sphere">sphere</mark> is a two-dimensional surface immersed within a <mark class="term" data-t="three-dimensional">three-dimensional</mark> space.</span><span class="zh">我们的球体是一个二维表面 浸入三维空间</span></span></div></div><div class="side"><span class="w">sphere</span> <span class="ph">[sfiә]</span><span class="df">n. 球, 球面, 球体, 天体, 地球仪, 范围 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div><div class="side"><span class="w">three-dimensional</span> <span class="ph">[θri:'dimenʃәnәl]</span><span class="df">a. 三维的, 立体的, 真实的 </span><span class="cat">托福</span></div></div>
+<div class="row" id="r10"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">01:24</span> The <mark class="term" data-t="ruler">ruler</mark> <mark class="term" data-t="measures">measures</mark> a distance through space in three dimensions. We allow it to lie outside the surface of the <mark class="term" data-t="sphere">sphere</mark>.</span><span class="zh">尺子测量空间的距离, 分三个维度。 我们允许它位于球体表面之外 。</span></span></div></div><div class="side"><span class="w">ruler</span> <span class="ph">['ru:lә]</span><span class="df">n. 统治者, 管理者, 尺, 直尺 </span><span class="cat">四级 · 六级 · 考研</span></div><div class="side"><span class="w">measures</span> <span class="ph"></span><span class="df">n. 措施；层组（measure的复数） </span><span class="cat">托福</span></div></div>
+<div class="row" id="r11"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">01:33</span> On the other hand, the distance <mark class="term" data-t="measured">measured</mark> by the <mark class="term" data-t="ant">ant</mark> is two-dimensional. It is <mark class="term" data-t="measured">measured</mark> along the <mark class="term" data-t="geometry">geometry</mark> of the surface.</span><span class="zh">另一方面,蚂蚁测量的距离是二维的。它沿着表面几何测量测量。</span></span></div></div><div class="side"><span class="w">measured</span> <span class="ph">['meʒәd]</span><span class="df">a. 整齐的, 慎重的, 基于标准的 </span><span class="cat">GRE</span></div><div class="side"><span class="w">ant</span> <span class="ph">[ænt]</span><span class="df">n. 蚂蚁 </span><span class="cat">四级 · 考研</span></div></div>
+<div class="row" id="r12"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">01:42</span> When we are interested in the <mark class="term" data-t="intrinsic">intrinsic</mark> <mark class="term" data-t="geometry">geometry</mark> of a surface, we don't focus on the distance <mark class="term" data-t="measured">measured</mark> by the <mark class="term" data-t="ruler">ruler</mark> but on the distance an ant would travel.</span><span class="zh">当我们关心表面的内在几何时, 我们不关注标尺测量的距离, 而是蚂蚁所行走的距离。</span></span></div></div><div class="side"><span class="w">intrinsic</span> <span class="ph">[in'trinsik]</span><span class="df">a. 本质的, 原有的, 真正的 </span><span class="cat">六级 · 考研 · 雅思 · 托福</span></div><div class="side"><span class="w">geometry</span> <span class="ph">[dʒi'ɒmәtri]</span><span class="df">n. 几何学 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div></div>
+<div class="row" id="r13"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">01:53</span> We measure this with a <mark class="term" data-t="metric">metric</mark>. A <mark class="term" data-t="metric">metric</mark> is a <mark class="term" data-t="mathematical">mathematical</mark> tool, which at any point gives us a <mark class="term" data-t="grid">grid</mark> <mark class="term" data-t="tangent">tangent</mark> to the object along which we can measure length and angles.</span><span class="zh">我们用量度来衡量。一度是一个数学工具, 它在任何时候都让我们能够对对象进行网格切换, 从而测量长度和角度。</span></span></div></div><div class="side"><span class="w">metric</span> <span class="ph">['metrik]</span><span class="df">a. 公尺的, 公制的, 计量的 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div><div class="side"><span class="w">mathematical</span> <span class="ph">[.mæθә'mætikl]</span><span class="df">a. 数学的, 精确的 </span><span class="cat">四级 · 六级 · 考研</span></div></div>
+<div class="row" id="r14"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">02:10</span> To measure the length of the whole path travelled by the <mark class="term" data-t="ant">ant</mark>, we would add the length of each of its <mark class="term" data-t="steps">steps</mark>.</span><span class="zh">为了衡量蚂蚁所走的整个道路的长度,我们要增加其中每一个步骤的长度。</span></span></div></div><div class="side"><span class="w">ant</span> <span class="ph">[ænt]</span><span class="df">n. 蚂蚁 </span><span class="cat">四级 · 考研</span></div><div class="side"><span class="w">steps</span> <span class="ph"></span><span class="df">n. （楼外的）台阶；步伐；步幅；步数 </span><span class="cat">雅思</span></div></div>
+<div class="row" id="r15"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">02:16</span> At each step, the <mark class="term" data-t="metric">metric</mark> gives us a <mark class="term" data-t="grid">grid</mark> within which we can measure the small distance that the <mark class="term" data-t="ant">ant</mark> has just covered.</span><span class="zh">每一步,衡量标准为我们提供了一个网格,我们可以测量蚂蚁刚刚覆盖的距离。</span></span></div></div><div class="side"><span class="w">metric</span> <span class="ph">['metrik]</span><span class="df">a. 公尺的, 公制的, 计量的 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div><div class="side"><span class="w">grid</span> <span class="ph">[grid]</span><span class="df">n. 格子, 栅格 </span><span class="cat">雅思</span></div></div>
+<div class="row" id="r16"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">02:23</span> By repeating this process for each step, we obtain the total length it has walked.</span><span class="zh">通过每一步重复这一进程,我们得到了它所走的全部长度。</span></span></div></div></div>
+<div class="row" id="r17"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">02:29</span> But what is the distance between A and B? By <mark class="term" data-t="definition">definition</mark>, the distance between two points is the length of the shortest path that connects them.</span><span class="zh">但A和B之间的距离是多少? 顾名思义,两点之间的距离是连接它们的最短路径的长度。</span></span></div></div><div class="side"><span class="w">definition</span> <span class="ph">[.defi'niʃәn]</span><span class="df">n. 定义, 精确度, 清晰度 </span><span class="cat">四级 · 六级 · 考研 · 托福 · GRE</span></div></div>
+<div class="row" id="r18"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">02:43</span> But at the moment, we don't know if the path followed by the <mark class="term" data-t="ant">ant</mark> is <mark class="term" data-t="optimal">optimal</mark>. It might have walked in zigzags and taken a longer path than the true distance between the two points.</span><span class="zh">但目前我们不知道蚂蚁所走的道路是否最佳。 它可能已经用西格扎格走过, 并且走的距离比这两点之间的真正距离要长。</span></span></div></div><div class="side"><span class="w">ant</span> <span class="ph">[ænt]</span><span class="df">n. 蚂蚁 </span><span class="cat">四级 · 考研</span></div><div class="side"><span class="w">optimal</span> <span class="ph">['ɒptimәl]</span><span class="df">a. 最佳的, 最理想的 </span><span class="cat">六级 · 托福</span></div></div>
+<div class="row" id="r19"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">02:54</span> The <mark class="term" data-t="metric">metric</mark> allows us to measure the length of a path, but it doesn't tell us whether or not this path is the shortest one possible.</span><span class="zh">衡量标准允许我们测量一条道路的长度, 但它并没有告诉我们这条道路是否是尽可能短的路。</span></span></div></div><div class="side"><span class="w">metric</span> <span class="ph">['metrik]</span><span class="df">a. 公尺的, 公制的, 计量的 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div></div>
+<div class="row" id="r20"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">03:02</span> Finding the true distance between A and B amounts to finding the most direct <mark class="term" data-t="trajectory">trajectory</mark> that connects them.</span><span class="zh">发现A和B之间的真正距离等于找到连接它们的最直接的轨道。</span></span></div></div><div class="side"><span class="w">trajectory</span> <span class="ph">[trә'dʒektri]</span><span class="df">n. 轨道, 弹道, 轨线 </span><span class="cat">GRE</span></div></div>
+<div class="row" id="r21"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">03:11</span> To do this, we can imagine sending tens or even hundreds of ants on the <mark class="term" data-t="journey">journey</mark>. Each <mark class="term" data-t="ant">ant</mark> will try a different path.</span><span class="zh">为了做到这一点,我们可以想象在旅途中会派出数十甚至几百只蚂蚁。每个蚂蚁将尝试不同的路径。</span></span></div></div><div class="side"><span class="w">journey</span> <span class="ph">['dʒә:ni]</span><span class="df">n. 旅程, 旅行, 行程 </span><span class="cat">四级 · 六级 · 考研</span></div><div class="side"><span class="w">ant</span> <span class="ph">[ænt]</span><span class="df">n. 蚂蚁 </span><span class="cat">四级 · 考研</span></div></div>
+<div class="row" id="r22"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">03:19</span> They all start from point A, but some get to point B quickly, while others take more time.</span><span class="zh">都从A点开始, 但有些人很快会发现B点, 而其他人需要更多的时间。</span></span></div></div></div>
+<div class="row" id="r23"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">03:26</span> Thanks to the <mark class="term" data-t="metric">metric</mark>, we can measure the length of each path, and by comparing them, find the <mark class="term" data-t="ant">ant</mark> which has travelled the shortest path.</span><span class="zh">由于有了衡量标准,我们可以测量每一条路径的长度,并通过比较它们,找到走过最短道路的蚂蚁。</span></span></div></div><div class="side"><span class="w">metric</span> <span class="ph">['metrik]</span><span class="df">a. 公尺的, 公制的, 计量的 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div><div class="side"><span class="w">ant</span> <span class="ph">[ænt]</span><span class="df">n. 蚂蚁 </span><span class="cat">四级 · 考研</span></div></div>
+<div class="row" id="r24"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">03:37</span> If we imagine that we have tested the <mark class="term" data-t="infinity">infinity</mark> of possible routes, we are now able to determine the shortest path.</span><span class="zh">如果我们想象我们已经测试了可能路线的无限性,我们现在能够确定最短的道路。</span></span></div></div><div class="side"><span class="w">infinity</span> <span class="ph">[in'finiti]</span><span class="df">n. 无限大, 无限 </span><span class="cat">六级 · GRE</span></div></div>
+<div class="row" id="r25"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">03:44</span> The <mark class="term" data-t="optimal">optimal</mark> path to get from A to B. This path determines the distance between the two points.</span><span class="zh">从 A 到 B 的最佳路径。 此路径决定两个点之间的距离 。</span></span></div></div><div class="side"><span class="w">optimal</span> <span class="ph">['ɒptimәl]</span><span class="df">a. 最佳的, 最理想的 </span><span class="cat">六级 · 托福</span></div></div>
+<div class="row" id="r26"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">03:53</span> This type of <mark class="term" data-t="trajectory">trajectory</mark> is called a geodesic.</span><span class="zh">这种轨道被称为大地测量。</span></span></div></div><div class="side"><span class="w">trajectory</span> <span class="ph">[trә'dʒektri]</span><span class="df">n. 轨道, 弹道, 轨线 </span><span class="cat">GRE</span></div></div>
+<div class="row" id="r27"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">03:58</span> It is the <mark class="term" data-t="generalization">generalization</mark> of a straight line, a <mark class="term" data-t="trajectory">trajectory</mark> along which one walks one foot in front of the other.</span><span class="zh">这条直线是一条直线的概括,一条轨道,一个人在另一条直径前面走一脚。</span></span></div></div><div class="side"><span class="w">generalization</span> <span class="ph">[,dʒenәrәlai'zeiʃәn]</span><span class="df">n. 一般化, 普遍化, 概括 </span><span class="cat">六级 · 托福</span></div><div class="side"><span class="w">trajectory</span> <span class="ph">[trә'dʒektri]</span><span class="df">n. 轨道, 弹道, 轨线 </span><span class="cat">GRE</span></div></div>
+<div class="row" id="r28"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">04:06</span> Each step takes us forward along the same direction as the previous step. We never <mark class="term" data-t="stray">stray</mark> off course.</span><span class="zh">每一步都使我们沿着前一步的同一方向前进,我们从不偏离航向。</span></span></div></div><div class="side"><span class="w">stray</span> <span class="ph">[strei]</span><span class="df">n. 走失的家畜, 浪子 </span><span class="cat">六级 · 托福 · GRE</span></div></div>
+<div class="row" id="r29"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">04:14</span> On the surface of a plane, geodesics are simply straight lines. That's why we can measure distances with a <mark class="term" data-t="ruler">ruler</mark>.</span><span class="zh">在平面表面,大地测量只是直线。所以我们可以用尺测量距离。</span></span></div></div><div class="side"><span class="w">ruler</span> <span class="ph">['ru:lә]</span><span class="df">n. 统治者, 管理者, 尺, 直尺 </span><span class="cat">四级 · 六级 · 考研</span></div></div>
+<div class="row" id="r30"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">04:24</span> When connecting two points, visiting a third point that is not aligned with the other two will always require a longer travel time.</span><span class="zh">在连接两个点时,访问与其它两个点不相符的第三个点时,总是需要更长的旅行时间。</span></span></div></div></div>
+<div class="row" id="r31"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">04:33</span> We call this the <mark class="term" data-t="triangle">triangle</mark> <mark class="term" data-t="inequality">inequality</mark>. On the surface of a <mark class="term" data-t="sphere">sphere</mark>, the geodesics are known as great circles.</span><span class="zh">我们称之为三角不平等。在球体表面,大地测量学被称为大圆圈。</span></span></div></div><div class="side"><span class="w">triangle</span> <span class="ph">['traiæŋgl]</span><span class="df">n. 三角形, 三个一组, 三角关系 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div><div class="side"><span class="w">inequality</span> <span class="ph">[.ini'kwɒliti]</span><span class="df">n. 不平等, 不同, 不平坦, 不平均 </span><span class="cat">专八</span></div></div>
+<div class="row" id="r32"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">04:42</span> They cover the greatest possible <mark class="term" data-t="circumference">circumference</mark>. On Earth, for example, lines of <mark class="term" data-t="longitude">longitude</mark> are geodesics.</span><span class="zh">它们覆盖了尽可能大的范围。例如,在地球上,经度线是大地测量学的。</span></span></div></div><div class="side"><span class="w">circumference</span> <span class="ph">[sә'kʌmfәrәns]</span><span class="df">n. 圆周, 周缘, 胸围 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福 · GRE</span></div><div class="side"><span class="w">longitude</span> <span class="ph">['lɒndʒitju:d]</span><span class="df">n. 经度, 经线 </span><span class="cat">六级 · 考研 · 雅思 · 托福</span></div></div>
+<div class="row" id="r33"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">04:51</span> A flight from <mark class="term" data-t="rome">Rome</mark> to Copenhagen will only be as short as possible when following this <mark class="term" data-t="precise">precise</mark> <mark class="term" data-t="curve">curve</mark>.</span><span class="zh">从罗马飞往哥本哈根的航班在遵循这一精确曲线时,将尽可能短。</span></span></div></div><div class="side"><span class="w">rome</span> <span class="ph">[rәum]</span><span class="df">n. 罗马 </span><span class="cat">专八</span></div><div class="side"><span class="w">precise</span> <span class="ph">[pri'sais]</span><span class="df">a. 精确的, 严谨的, 明确的 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福 · GRE</span></div></div>
+<div class="row" id="r34"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">04:59</span> On the other hand, apart from the <mark class="term" data-t="equator">equator</mark>, lines of <mark class="term" data-t="latitude">latitude</mark> are not geodesics. They are not great circles on the <mark class="term" data-t="sphere">sphere</mark>.</span><span class="zh">另一方面,除了赤道以外,纬度线不是大地测量学,它们并不是球体上的极大圆环。</span></span></div></div><div class="side"><span class="w">equator</span> <span class="ph">[i'kweitә]</span><span class="df">n. 赤道 </span><span class="cat">六级 · 考研 · 雅思 · 托福 · GRE</span></div><div class="side"><span class="w">latitude</span> <span class="ph">['lætitju:d]</span><span class="df">n. 纬度, 范围 </span><span class="cat">六级 · 考研 · 雅思 · 托福 · GRE</span></div></div>
+<div class="row" id="r35"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">05:08</span> To connect two points at the same <mark class="term" data-t="latitude">latitude</mark>, such as Paris and Quebec, there is a faster path.</span><span class="zh">连接同一纬度的两个点,如巴黎和魁北克,有一个更快的道路。</span></span></div></div><div class="side"><span class="w">latitude</span> <span class="ph">['lætitju:d]</span><span class="df">n. 纬度, 范围 </span><span class="cat">六级 · 考研 · 雅思 · 托福 · GRE</span></div></div>
+<div class="row" id="r36"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">05:18</span> The field of <mark class="term" data-t="differential">differential</mark> <mark class="term" data-t="geometry">geometry</mark> has developed a whole variety of <mark class="term" data-t="tools">tools</mark> to <mark class="term" data-t="characterize">characterize</mark> the curvature of a surface.</span><span class="zh">差异几何领域开发了各种工具,以描述表面曲线的特点。</span></span></div></div><div class="side"><span class="w">differential</span> <span class="ph">[difә'renʃәl]</span><span class="df">a. 差别的, 特异的, 微分的 </span><span class="cat">专八</span></div><div class="side"><span class="w">geometry</span> <span class="ph">[dʒi'ɒmәtri]</span><span class="df">n. 几何学 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div></div>
+<div class="row" id="r37"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">05:25</span> One of the most important <mark class="term" data-t="tools">tools</mark> is the <mark class="term" data-t="so-called">so-called</mark> curvature tensor.</span><span class="zh">最重要的工具之一是所谓的曲率高压。</span></span></div></div><div class="side"><span class="w">tools</span> <span class="ph">[tu:lz]</span><span class="df">n. 工具, 工具菜单；工具箱（tool的复数形式） </span><span class="cat">雅思</span></div><div class="side"><span class="w">so-called</span> <span class="ph"></span><span class="df">a. 所谓的, 号称的 </span><span class="cat">四级 · 六级</span></div></div>
+<div class="row" id="r38"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">05:31</span> It is an object which expresses how geodesics <mark class="term" data-t="evolve">evolve</mark> compared to each other.</span><span class="zh">它是一个表达大地测量学如何相互演变的物体。</span></span></div></div><div class="side"><span class="w">evolve</span> <span class="ph">[i'vɒlv]</span><span class="df">vi. 进展, 进化, 展开 </span><span class="cat">四级 · 六级 · 考研 · 托福 · GRE</span></div></div>
+<div class="row" id="r39"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">05:38</span> It <mark class="term" data-t="measures">measures</mark> the curvature of a <mark class="term" data-t="geometry">geometry</mark> because the more curvature there is, the faster the geodesics will <mark class="term" data-t="converge">converge</mark> or <mark class="term" data-t="diverge">diverge</mark> from each other.</span><span class="zh">它测量几何的曲率 因为曲率越高 大地测量学会越快相聚或不同</span></span></div></div><div class="side"><span class="w">measures</span> <span class="ph"></span><span class="df">n. 措施；层组（measure的复数） </span><span class="cat">托福</span></div><div class="side"><span class="w">geometry</span> <span class="ph">[dʒi'ɒmәtri]</span><span class="df">n. 几何学 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div></div>
+<div class="row" id="r40"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">05:48</span> And <mark class="term" data-t="conversely">conversely</mark>, the <mark class="term" data-t="flatter">flatter</mark> the surface, the more its geodesics tend to stay <mark class="term" data-t="parallel">parallel</mark> to each other.</span><span class="zh">反过来说,表层的平面 其大地测量学越是相互平行</span></span></div></div><div class="side"><span class="w">conversely</span> <span class="ph">['kɔnv\\\\:sli]</span><span class="df">adv. 相反, 逆, 颠倒, 反题, 反 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div><div class="side"><span class="w">flatter</span> <span class="ph">['flætә]</span><span class="df">vt. 奉承, 阿谀, 使高兴 </span><span class="cat">六级 · 考研 · 雅思 · 托福 · GRE</span></div></div>
+<div class="row" id="r41"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">05:54</span> When looking at more complex surfaces, geodesics can take interesting shapes.</span><span class="zh">当观察更复杂的表面时,大地测量学可以产生有趣的形状。</span></span></div></div></div>
+</section>
+<section class="chapter"><h2 id="c42">n. 常数, 恒量<span class="ct">06:03</span></h2>
+<div class="row" id="r42"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">06:03</span> On the surface of this <mark class="term" data-t="funnel">funnel</mark>, for example, straight lines seem to be deflected near the central hole.</span><span class="zh">例如,在这个漏斗表面, 直线似乎偏向了中央洞附近。</span></span></div></div><div class="side"><span class="w">funnel</span> <span class="ph">['fʌnl]</span><span class="df">n. 漏斗, 漏斗状的东西, 烟囱 </span><span class="cat">雅思 · 托福</span></div></div>
+<div class="row" id="r43"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">06:12</span> When viewed from above, these geodesics appear to <mark class="term" data-t="bend">bend</mark> in a manner very similar to how light rays are lensed near a black hole.</span><span class="zh">从上面看,这些大地测量学的弯曲方式 与黑洞附近光线的透镜非常相似。</span></span></div></div><div class="side"><span class="w">bend</span> <span class="ph">[bend]</span><span class="df">vi. 变弯曲, 屈服 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福 · GRE</span></div></div>
+<div class="row" id="r44"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">06:23</span> And this is not a <mark class="term" data-t="coincidence">coincidence</mark>. Light rays get <mark class="term" data-t="bent">bent</mark> for the same reason.</span><span class="zh">这不是巧合,光线也因为同样的原因被弯曲</span></span></div></div><div class="side"><span class="w">coincidence</span> <span class="ph">[kәu'insidәns]</span><span class="df">n. 巧合, 同时发生 </span><span class="cat">六级 · 考研 · 雅思 · 托福</span></div><div class="side"><span class="w">bent</span> <span class="ph">[bent]</span><span class="df">a. 弯曲的, 决心的 </span><span class="cat">雅思 · 托福 · GRE</span></div></div>
+<div class="row" id="r45"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">06:30</span> The <mark class="term" data-t="universe">universe</mark> in which we live is not a two-dimensional surface. It is a hyper surface with four dimensions.</span><span class="zh">我们所生活的宇宙不是二维表面,而是具有四个维度的超高表层。</span></span></div></div><div class="side"><span class="w">universe</span> <span class="ph">['ju:nivә:s]</span><span class="df">n. 宇宙, 星系, (思想等)范围 </span><span class="cat">四级 · 六级 · 考研 · 托福</span></div></div>
+<div class="row" id="r46"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">06:38</span> Three dimensions of space and one of time. This is space-time.</span><span class="zh">空间的三维和时间的一度。这是时空的。</span></span></div></div></div>
+<div class="row" id="r47"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">06:45</span> All objects in the <mark class="term" data-t="universe">universe</mark> <mark class="term" data-t="evolve">evolve</mark> through space-time in the same way that the <mark class="term" data-t="ant">ant</mark> walks on the <mark class="term" data-t="sphere">sphere</mark>.</span><span class="zh">宇宙中的所有物体 都随着时空的演变 和蚂蚁在球体上行走的方式一样</span></span></div></div><div class="side"><span class="w">universe</span> <span class="ph">['ju:nivә:s]</span><span class="df">n. 宇宙, 星系, (思想等)范围 </span><span class="cat">四级 · 六级 · 考研 · 托福</span></div><div class="side"><span class="w">evolve</span> <span class="ph">[i'vɒlv]</span><span class="df">vi. 进展, 进化, 展开 </span><span class="cat">四级 · 六级 · 考研 · 托福 · GRE</span></div></div>
+<div class="row" id="r48"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">06:52</span> But in space-time, the distance between two events is not only their distance through space, but also through time.</span><span class="zh">但在时空,两次事件之间的距离不仅是它们穿越空间的距离,而且包括时间。</span></span></div></div></div>
+<div class="row" id="r49"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">07:02</span> When they don't experience any force, bodies in the <mark class="term" data-t="universe">universe</mark> have no reason to turn one way or the other.</span><span class="zh">当它们没有经历任何力量时 宇宙中的人体就没有理由 以某种方式改变</span></span></div></div><div class="side"><span class="w">universe</span> <span class="ph">['ju:nivә:s]</span><span class="df">n. 宇宙, 星系, (思想等)范围 </span><span class="cat">四级 · 六级 · 考研 · 托福</span></div></div>
+<div class="row" id="r50"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">07:08</span> Objects have a <mark class="term" data-t="tendency">tendency</mark> to move straight ahead, and they <mark class="term" data-t="hence">hence</mark> follow geodesics.</span><span class="zh">物体有直行前进的倾向,因此它们遵循大地测量。</span></span></div></div><div class="side"><span class="w">tendency</span> <span class="ph">['tendәnsi]</span><span class="df">n. 趋向, 倾向 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div><div class="side"><span class="w">hence</span> <span class="ph">[hens]</span><span class="df">adv. 因此, 从此 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div></div>
+<div class="row" id="r51"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">07:14</span> They move along straight lines within the <mark class="term" data-t="geometry">geometry</mark> of the <mark class="term" data-t="universe">universe</mark>.</span><span class="zh">它们沿着直线移动 在宇宙的几何结构内</span></span></div></div><div class="side"><span class="w">geometry</span> <span class="ph">[dʒi'ɒmәtri]</span><span class="df">n. 几何学 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div><div class="side"><span class="w">universe</span> <span class="ph">['ju:nivә:s]</span><span class="df">n. 宇宙, 星系, (思想等)范围 </span><span class="cat">四级 · 六级 · 考研 · 托福</span></div></div>
+<div class="row" id="r52"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">07:18</span> Our <mark class="term" data-t="universe">universe</mark> is very <mark class="term" data-t="diverse">diverse</mark>, and the <mark class="term" data-t="metric">metric</mark> that describes its <mark class="term" data-t="geometry">geometry</mark> can vary from place to place.</span><span class="zh">我们的宇宙非常多样化, 描述其几何的测量标准 各地可能各不相同。</span></span></div></div><div class="side"><span class="w">universe</span> <span class="ph">['ju:nivә:s]</span><span class="df">n. 宇宙, 星系, (思想等)范围 </span><span class="cat">四级 · 六级 · 考研 · 托福</span></div><div class="side"><span class="w">diverse</span> <span class="ph">[dai'vә:s]</span><span class="df">a. 不同的, 变化多的 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福 · GRE</span></div></div>
+<div class="row" id="r53"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">07:28</span> In an empty region of the <mark class="term" data-t="universe">universe</mark>, space-time is almost <mark class="term" data-t="flat">flat</mark>.</span><span class="zh">在宇宙的空旷区域,空间时间几乎是平坦的。</span></span></div></div><div class="side"><span class="w">universe</span> <span class="ph">['ju:nivә:s]</span><span class="df">n. 宇宙, 星系, (思想等)范围 </span><span class="cat">四级 · 六级 · 考研 · 托福</span></div><div class="side"><span class="w">flat</span> <span class="ph">[flæt]</span><span class="df">a. 平坦的, 单调的, 无力的, 浅的, 萧条的, 干脆的, 无聊的 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div></div>
+<div class="row" id="r54"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">07:34</span> The geodesics are the <mark class="term" data-t="usual">usual</mark> straight lines, and all objects or light rays move straight ahead at a <mark class="term" data-t="constant">constant</mark> speed.</span><span class="zh">大地测量是通常的直线, 所有物体或光线都以恒定速度直向前移动。</span></span></div></div><div class="side"><span class="w">usual</span> <span class="ph">['ju:ʒuәl]</span><span class="df">a. 平常的, 通常的 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div><div class="side"><span class="w">constant</span> <span class="ph">['kɒnstәnt]</span><span class="df">n. 常数, 恒量 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福 · GRE</span></div></div>
+<div class="row" id="r55"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">07:42</span> We call this the Minkowski <mark class="term" data-t="metric">metric</mark>. It is the type of space-time described by special <mark class="term" data-t="relativity">relativity</mark>.</span><span class="zh">我们称之为Minkowski衡量标准,这是以特殊相对论描述的时空类型。</span></span></div></div><div class="side"><span class="w">metric</span> <span class="ph">['metrik]</span><span class="df">a. 公尺的, 公制的, 计量的 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div><div class="side"><span class="w">relativity</span> <span class="ph">[.relә'tiviti]</span><span class="df">n. 有关系, 相关性, 相对性 </span><span class="cat">四级 · 六级 · 考研</span></div></div>
+<div class="row" id="r56"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">07:50</span> Any motion between two objects is <mark class="term" data-t="relative">relative</mark>. All <mark class="term" data-t="positions">positions</mark> and directions are <mark class="term" data-t="equivalent">equivalent</mark>.</span><span class="zh">两个对象之间的任何运动都是相对的。所有位置和方向都相等。</span></span></div></div><div class="side"><span class="w">relative</span> <span class="ph">['relәtiv]</span><span class="df">n. 亲戚, 关系词 </span><span class="cat">四级 · 六级 · 考研</span></div><div class="side"><span class="w">positions</span> <span class="ph"></span><span class="df">n. 定位；位置（position的复数） </span><span class="cat">雅思</span></div></div>
+<div class="row" id="r57"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">07:58</span> However, close to a massive body, space-time gets <mark class="term" data-t="bent">bent</mark>.</span><span class="zh">然而,接近一个巨大的身体 时空就会弯曲</span></span></div></div><div class="side"><span class="w">bent</span> <span class="ph">[bent]</span><span class="df">a. 弯曲的, 决心的 </span><span class="cat">雅思 · 托福 · GRE</span></div></div>
+<div class="row" id="r58"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">08:03</span> For bodies that are <mark class="term" data-t="spherical">spherical</mark>, <mark class="term" data-t="isolated">isolated</mark>, and <mark class="term" data-t="stable">stable</mark> over time, we consider the Schwarzschild <mark class="term" data-t="metric">metric</mark>.</span><span class="zh">对于球体、孤立和稳定的身体 随着时间的推移,我们考虑Schwarzschild的衡量标准。</span></span></div></div><div class="side"><span class="w">spherical</span> <span class="ph">['sferikl]</span><span class="df">a. 球的, 球面的, 球状的, 天体的 </span><span class="cat">六级 · 托福</span></div><div class="side"><span class="w">isolated</span> <span class="ph">['aisәleitid]</span><span class="df">a. 孤立的, 孤零零的 </span><span class="cat">雅思 · 托福</span></div></div>
+<div class="row" id="r59"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">08:10</span> It is the most common <mark class="term" data-t="metric">metric</mark> in general <mark class="term" data-t="relativity">relativity</mark>.</span><span class="zh">一般来说,它是相对性方面最常见的衡量标准。</span></span></div></div><div class="side"><span class="w">metric</span> <span class="ph">['metrik]</span><span class="df">a. 公尺的, 公制的, 计量的 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div><div class="side"><span class="w">relativity</span> <span class="ph">[.relә'tiviti]</span><span class="df">n. 有关系, 相关性, 相对性 </span><span class="cat">四级 · 六级 · 考研</span></div></div>
+<div class="row" id="r60"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">08:15</span> The geodesics <mark class="term" data-t="correspond">correspond</mark> to deflected trajectories or orbits.</span><span class="zh">大地测量学对应偏向轨道或轨道。</span></span></div></div><div class="side"><span class="w">correspond</span> <span class="ph">[.kɒri'spɒnd]</span><span class="df">vi. 符合, 通信, 相当 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div></div>
+<div class="row" id="r61"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">08:20</span> If the moon revolves around the earth, it is because it follows a straight line, a geodesic, but within a curved <mark class="term" data-t="geometry">geometry</mark>,</span><span class="zh">如果月球绕着地球旋转, 这是因为它沿着一条直线,大地测量, 但是在曲线的几何内,</span></span></div></div><div class="side"><span class="w">geometry</span> <span class="ph">[dʒi'ɒmәtri]</span><span class="df">n. 几何学 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div></div>
+<div class="row" id="r62"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">08:29</span> somewhat like the <mark class="term" data-t="funnel">funnel</mark> we <mark class="term" data-t="saw">saw</mark> before.</span><span class="zh">有点像我们以前看到的漏斗</span></span></div></div><div class="side"><span class="w">funnel</span> <span class="ph">['fʌnl]</span><span class="df">n. 漏斗, 漏斗状的东西, 烟囱 </span><span class="cat">雅思 · 托福</span></div><div class="side"><span class="w">saw</span> <span class="ph">[sɒ:]</span><span class="df">n. 锯子, 谚语 </span><span class="cat">四级 · 六级 · 考研</span></div></div>
+<div class="row" id="r63"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">08:34</span> The only difference is that this geodesic is not only aligned through space, it also describes the <mark class="term" data-t="trajectory">trajectory</mark> through time.</span><span class="zh">唯一的区别是,大地测量不仅通过空间对齐,还描述了时间的轨迹。</span></span></div></div><div class="side"><span class="w">trajectory</span> <span class="ph">[trә'dʒektri]</span><span class="df">n. 轨道, 弹道, 轨线 </span><span class="cat">GRE</span></div></div>
+<div class="row" id="r64"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">08:47</span> When an apple falls off a tree from a <mark class="term" data-t="previously">previously</mark> <mark class="term" data-t="motionless">motionless</mark> state,</span><span class="zh">当苹果从树上掉下的时候,</span></span></div></div><div class="side"><span class="w">previously</span> <span class="ph">['pri:vju:sli]</span><span class="df">adv. 先, 先前, 以前, 前, (非正式)过早, 过急, 在前, 在...以前, 在先 </span><span class="cat">四级 · 六级</span></div><div class="side"><span class="w">motionless</span> <span class="ph">['mәuʃәnlis]</span><span class="df">a. 不动的, 静止的 </span><span class="cat">托福</span></div></div>
+<div class="row" id="r65"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">08:51</span> it is because the curvature of space-time bends the geodesics between time and space.</span><span class="zh">这是因为时空的曲率弯曲了时间和空间之间的大地测量。</span></span></div></div></div>
+<div class="row" id="r66"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">08:57</span> The apple, which was <mark class="term" data-t="moving">moving</mark> only through time, gets <mark class="term" data-t="gradually">gradually</mark> deflected off course.</span><span class="zh">苹果只是经过一段时间才移动, 逐渐偏离方向。</span></span></div></div><div class="side"><span class="w">moving</span> <span class="ph">['mu:viŋ]</span><span class="df">a. 动人的, 令人感动的, 鼓动的, 原动的, [无比较级]活动的, 转动的 </span><span class="cat">专八</span></div><div class="side"><span class="w">gradually</span> <span class="ph">['grædʒuәli]</span><span class="df">adv. 逐渐地 </span><span class="cat">四级 · 六级</span></div></div>
+<div class="row" id="r67"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">09:03</span> Its flow through time gets converted into a speed through space.</span><span class="zh">其流经时间的流转 被转换成一个通过空间的速度</span></span></div></div></div>
+</section>
+<section class="chapter"><h2 id="c68">n. 奇异, 突出, 稀有 · n. 地平线<span class="ct">09:08</span></h2>
+<div class="row" id="r68"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">09:08</span> When the attracting body is extremely massive, like a <mark class="term" data-t="static">static</mark> black hole, the Schwarzschild <mark class="term" data-t="metric">metric</mark> describes a sort of hole,</span><span class="zh">当吸引体非常大, 就像一个静态黑洞, 施瓦兹柴尔德的指数描述一个孔,</span></span></div></div><div class="side"><span class="w">static</span> <span class="ph">['stætik]</span><span class="df">n. 静电, 静电干扰 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福 · GRE</span></div><div class="side"><span class="w">metric</span> <span class="ph">['metrik]</span><span class="df">a. 公尺的, 公制的, 计量的 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div></div>
+<div class="row" id="r69"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">09:18</span> a <mark class="term" data-t="spherical">spherical</mark> region of space much like the hole in a <mark class="term" data-t="funnel">funnel</mark>.</span><span class="zh">空间球体区域 与漏斗洞相似</span></span></div></div><div class="side"><span class="w">spherical</span> <span class="ph">['sferikl]</span><span class="df">a. 球的, 球面的, 球状的, 天体的 </span><span class="cat">六级 · 托福</span></div><div class="side"><span class="w">funnel</span> <span class="ph">['fʌnl]</span><span class="df">n. 漏斗, 漏斗状的东西, 烟囱 </span><span class="cat">雅思 · 托福</span></div></div>
+<div class="row" id="r70"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">09:23</span> The <mark class="term" data-t="metric">metric</mark> seems <mark class="term" data-t="broken">broken</mark>.</span><span class="zh">公尺似乎坏了</span></span></div></div><div class="side"><span class="w">metric</span> <span class="ph">['metrik]</span><span class="df">a. 公尺的, 公制的, 计量的 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div><div class="side"><span class="w">broken</span> <span class="ph">['brәukәn]</span><span class="df">a. 坏掉的, 打破的, 断掉的 </span><span class="cat">四级</span></div></div>
+<div class="row" id="r71"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">09:25</span> This is called the Schwarzschild <mark class="term" data-t="radius">radius</mark>, or more <mark class="term" data-t="commonly">commonly</mark> the event <mark class="term" data-t="horizon">horizon</mark>.</span><span class="zh">叫做"斯瓦兹柴尔德半径", 或更常见的就是事件地平线。</span></span></div></div><div class="side"><span class="w">radius</span> <span class="ph">['reidiәs]</span><span class="df">n. 半径, 范围, 辐射光线 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福 · GRE</span></div><div class="side"><span class="w">commonly</span> <span class="ph">['kɒmәnli]</span><span class="df">adv. 一般, 普通, 通常 </span><span class="cat">四级 · 六级</span></div></div>
+<div class="row" id="r72"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">09:31</span> As seen from outside, no object can cross this <mark class="term" data-t="horizon">horizon</mark>.</span><span class="zh">从外部看,没有物体能够跨越这个地平线。</span></span></div></div><div class="side"><span class="w">horizon</span> <span class="ph">[hә'raizәn]</span><span class="df">n. 地平线, 眼界, (天)视地平 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div></div>
+<div class="row" id="r73"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">09:36</span> That said, it is just an <mark class="term" data-t="illusion">illusion</mark>, like the North <mark class="term" data-t="pole">Pole</mark> on Earth, which breaks apart when we <mark class="term" data-t="flatten">flatten</mark> it on a map.</span><span class="zh">说到这里,这只是一种幻觉,就像地球上的北极一样,当我们把它平整在地图上时,它就会分裂。</span></span></div></div><div class="side"><span class="w">illusion</span> <span class="ph">[i'lju:ʒәn]</span><span class="df">n. 幻影, 错觉, 幻想 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福 · GRE</span></div><div class="side"><span class="w">pole</span> <span class="ph">[pәul]</span><span class="df">n. 波兰人, 极点, 磁极, 电极, 杆, 竿, 相反的极端 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div></div>
+<div class="row" id="r74"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">09:46</span> An <mark class="term" data-t="apparent">apparent</mark> <mark class="term" data-t="singularity">singularity</mark>.</span><span class="zh">明显的独一性</span></span></div></div><div class="side"><span class="w">apparent</span> <span class="ph">[ә'pærәnt]</span><span class="df">a. 清晰可见的, 显然的, 表面上的 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div><div class="side"><span class="w">singularity</span> <span class="ph">[.siŋgju'læriti]</span><span class="df">n. 奇异, 突出, 稀有 </span><span class="cat">GRE</span></div></div>
+<div class="row" id="r75"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">09:50</span> In reality, from the point of view of a <mark class="term" data-t="spacecraft">spacecraft</mark> <mark class="term" data-t="approaching">approaching</mark> the black hole, it is possible to cross this region.</span><span class="zh">实际上,从航天器接近黑洞的角度来看,有可能穿越这一地区。</span></span></div></div><div class="side"><span class="w">spacecraft</span> <span class="ph">['speiskræft]</span><span class="df">n. 航天飞船 </span><span class="cat">四级 · 六级 · 考研 · 托福</span></div><div class="side"><span class="w">approaching</span> <span class="ph"></span><span class="df">v. 进场；侵入；接近（approach的ing形式） </span><span class="cat">托福</span></div></div>
+<div class="row" id="r76"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">09:57</span> <mark class="term" data-t="unfortunately">Unfortunately</mark>, the <mark class="term" data-t="spacecraft">spacecraft</mark> would end up bumping into another <mark class="term" data-t="singularity">singularity</mark>, a real one this time,</span><span class="zh">不幸的是,航天器最终会撞上另一个奇点, 这次真的,</span></span></div></div><div class="side"><span class="w">unfortunately</span> <span class="ph">[ʌn'fɔ:tjjnәtli]</span><span class="df">adv. 恐怕, 不幸的是 </span><span class="cat">四级 · 六级 · 考研 · 托福</span></div><div class="side"><span class="w">spacecraft</span> <span class="ph">['speiskræft]</span><span class="df">n. 航天飞船 </span><span class="cat">四级 · 六级 · 考研 · 托福</span></div></div>
+<div class="row" id="r77"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">10:04</span> a point where the curvature becomes <mark class="term" data-t="infinite">infinite</mark> and that modern science cannot yet understand.</span><span class="zh">在一个点上,曲线变得无限,现代科学还无法理解。</span></span></div></div><div class="side"><span class="w">infinite</span> <span class="ph">['infinit]</span><span class="df">n. 无限, 神 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div></div>
+<div class="row" id="r78"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">10:14</span> Finally, there exists a <mark class="term" data-t="multitude">multitude</mark> of other <mark class="term" data-t="places">places</mark> in the <mark class="term" data-t="universe">universe</mark> with more complex metrics,</span><span class="zh">最后,宇宙中还有其他许多地方 具有更复杂的测量指标</span></span></div></div><div class="side"><span class="w">multitude</span> <span class="ph">['mʌltitju:d]</span><span class="df">n. 多数, 群众 </span><span class="cat">六级 · 考研 · 雅思 · 托福 · GRE</span></div><div class="side"><span class="w">places</span> <span class="ph"></span><span class="df">n. 地点；位置；[数]位数（place的复数） </span><span class="cat">雅思</span></div></div>
+<div class="row" id="r79"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">10:20</span> such as the Kerr <mark class="term" data-t="metric">metric</mark>, which describes black holes with a very fast <mark class="term" data-t="rotation">rotation</mark>, with a central ring <mark class="term" data-t="singularity">singularity</mark>,</span><span class="zh">例如Kerr 度量,它描述黑洞的旋转速度非常快, 中央环奇数,</span></span></div></div><div class="side"><span class="w">metric</span> <span class="ph">['metrik]</span><span class="df">a. 公尺的, 公制的, 计量的 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div><div class="side"><span class="w">rotation</span> <span class="ph">[rәu'teiʃәn]</span><span class="df">n. 旋转, 循环, 轮流 </span><span class="cat">四级 · 六级 · 托福</span></div></div>
+<div class="row" id="r80"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">10:28</span> or the FLRW <mark class="term" data-t="metric">metric</mark>, which stands for Friedman, Lomet, Roberts and Walker, which describes an <mark class="term" data-t="approximation">approximation</mark> of space-time on a large scale.</span><span class="zh">或FLRW衡量标准,即弗里德曼、洛梅特、罗伯茨和沃克的测量标准,它说明大规模接近时空的情况。</span></span></div></div><div class="side"><span class="w">metric</span> <span class="ph">['metrik]</span><span class="df">a. 公尺的, 公制的, 计量的 </span><span class="cat">四级 · 六级 · 考研 · 雅思</span></div><div class="side"><span class="w">approximation</span> <span class="ph">[ә.prɒksi'meiʃәn]</span><span class="df">n. 接近, 近似值 </span><span class="cat">SAT</span></div></div>
+<div class="row" id="r81"><div class="main-col"><div class="sent"><button class="play" aria-label="播放">▶</button><span class="txt"><span class="en"><span class="ts">10:39</span> By expressing the curvature and the <mark class="term" data-t="expansion">expansion</mark> of the entire <mark class="term" data-t="cosmos">cosmos</mark>, it is at the <mark class="term" data-t="origin">origin</mark> of the Big <mark class="term" data-t="bang">Bang</mark> Theory.</span><span class="zh">通过表达整个宇宙的曲线和扩张,它就是大爆炸理论的起源。</span></span></div></div><div class="side"><span class="w">expansion</span> <span class="ph">[ik'spænʃәn]</span><span class="df">n. 扩充, 开展, 膨胀 </span><span class="cat">四级 · 六级 · 考研 · 雅思 · 托福</span></div><div class="side"><span class="w">cosmos</span> <span class="ph">['kɔzmɔs]</span><span class="df">n. 宇宙, 秩序, 和谐, 大波斯菊 </span><span class="cat">六级 · GRE</span></div></div>
+</section></article>
+
+  <p class="note">
+    点击任意句子从该处播放 · <kbd>空格</kbd> 播放/暂停 · <kbd>T</kbd> 中文 · <kbd>C</kbd> 连播 ·
+    <kbd>↑</kbd><kbd>↓</kbd> 上下句 · <kbd>Esc</kbd> 停止<br>
+    字幕由 ASR 转录并经 AI 校正重译，术语释义仅供参考。
+  </p>
+</main>
+
+<div class="kv">
+  <button class="btn top" id="b-top" title="回到顶部">↑</button>
+</div>
+<div class="tooltip" id="tip"></div>
+
+<script>
+var DATA=[{"s":5710,"e":11710,"ts":"00:05","en":"Welcome back to ScienceClick. Today, geodesics and relativity.","zh":"欢迎回到科学闪烁节 今天是大地测量和相对论"},{"s":11710,"e":15710,"ts":"00:11","en":"What is the distance between these two points?","zh":"这两个点之间的距离是多少?"},{"s":15710,"e":22710,"ts":"00:15","en":"We could take a ruler, place it on the screen and read how many centimetres separate point A from point B.","zh":"我们可以用尺子,放在屏幕上 读取B点的A点"},{"s":22710,"e":29710,"ts":"00:22","en":"We could also ask an ant to walk straight from one point to the other and count the number of steps it has to take.","zh":"我们还可以要求蚂蚁从一个点直走到另一个点,并计算它必须采取的步骤的数目。"},{"s":29710,"e":36710,"ts":"00:29","en":"We measure the distance in centimetres in the first case and in number of steps in the second.","zh":"我们测量第一个案例的距离以厘米计,第二个案例的距离则以步骤数表示。"},{"s":36710,"e":44710,"ts":"00:36","en":"But imagine now that points A and B are on the surface of a sphere. What is the distance between them now?","zh":"但是现在想象一下A点和B点在球体表面。它们之间的距离是多少?"},{"s":44710,"e":54710,"ts":"00:44","en":"At first sight, we could take the ruler again and place it between points A and B to measure how many centimetres separate them.","zh":"乍一看,我们可以再次使用标尺,将其置于A点和B点之间,以测量它们分开多少厘米。"},{"s":54710,"e":65710,"ts":"00:54","en":"But if we ask the ant to walk from A to B, since it remains on the surface of the sphere, it will follow a different path from the straight line measured by the ruler.","zh":"但如果我们要求蚂蚁从A到B行走, 因为蚂蚁仍然停留在球体表面, 它将沿着一条与尺子测量的直线不同的路径。"},{"s":65710,"e":78060,"ts":"01:05","en":"The ant must walk a greater distance because the sphere is curved. It has to cover a whole arc. It does not measure the same distance as the ruler.","zh":"蚂蚁必须走远一点, 因为球体被弯曲。 它必须覆盖整个弧。 它不能测量与标尺的距离 。"},{"s":78060,"e":84060,"ts":"01:18","en":"Our sphere is a two-dimensional surface immersed within a three-dimensional space.","zh":"我们的球体是一个二维表面 浸入三维空间"},{"s":84060,"e":93060,"ts":"01:24","en":"The ruler measures a distance through space in three dimensions. We allow it to lie outside the surface of the sphere.","zh":"尺子测量空间的距离, 分三个维度。 我们允许它位于球体表面之外 。"},{"s":93060,"e":102060,"ts":"01:33","en":"On the other hand, the distance measured by the ant is two-dimensional. It is measured along the geometry of the surface.","zh":"另一方面,蚂蚁测量的距离是二维的。它沿着表面几何测量测量。"},{"s":102060,"e":112060,"ts":"01:42","en":"When we are interested in the intrinsic geometry of a surface, we don't focus on the distance measured by the ruler but on the distance an ant would travel.","zh":"当我们关心表面的内在几何时, 我们不关注标尺测量的距离, 而是蚂蚁所行走的距离。"},{"s":113060,"e":130150,"ts":"01:53","en":"We measure this with a metric. A metric is a mathematical tool, which at any point gives us a grid tangent to the object along which we can measure length and angles.","zh":"我们用量度来衡量。一度是一个数学工具, 它在任何时候都让我们能够对对象进行网格切换, 从而测量长度和角度。"},{"s":130150,"e":136150,"ts":"02:10","en":"To measure the length of the whole path travelled by the ant, we would add the length of each of its steps.","zh":"为了衡量蚂蚁所走的整个道路的长度,我们要增加其中每一个步骤的长度。"},{"s":136150,"e":143150,"ts":"02:16","en":"At each step, the metric gives us a grid within which we can measure the small distance that the ant has just covered.","zh":"每一步,衡量标准为我们提供了一个网格,我们可以测量蚂蚁刚刚覆盖的距离。"},{"s":143150,"e":149150,"ts":"02:23","en":"By repeating this process for each step, we obtain the total length it has walked.","zh":"通过每一步重复这一进程,我们得到了它所走的全部长度。"},{"s":149150,"e":163060,"ts":"02:29","en":"But what is the distance between A and B? By definition, the distance between two points is the length of the shortest path that connects them.","zh":"但A和B之间的距离是多少? 顾名思义,两点之间的距离是连接它们的最短路径的长度。"},{"s":163060,"e":174060,"ts":"02:43","en":"But at the moment, we don't know if the path followed by the ant is optimal. It might have walked in zigzags and taken a longer path than the true distance between the two points.","zh":"但目前我们不知道蚂蚁所走的道路是否最佳。 它可能已经用西格扎格走过, 并且走的距离比这两点之间的真正距离要长。"},{"s":174060,"e":182060,"ts":"02:54","en":"The metric allows us to measure the length of a path, but it doesn't tell us whether or not this path is the shortest one possible.","zh":"衡量标准允许我们测量一条道路的长度, 但它并没有告诉我们这条道路是否是尽可能短的路。"},{"s":182060,"e":190060,"ts":"03:02","en":"Finding the true distance between A and B amounts to finding the most direct trajectory that connects them.","zh":"发现A和B之间的真正距离等于找到连接它们的最直接的轨道。"},{"s":191060,"e":199060,"ts":"03:11","en":"To do this, we can imagine sending tens or even hundreds of ants on the journey. Each ant will try a different path.","zh":"为了做到这一点,我们可以想象在旅途中会派出数十甚至几百只蚂蚁。每个蚂蚁将尝试不同的路径。"},{"s":199060,"e":206060,"ts":"03:19","en":"They all start from point A, but some get to point B quickly, while others take more time.","zh":"都从A点开始, 但有些人很快会发现B点, 而其他人需要更多的时间。"},{"s":206060,"e":216060,"ts":"03:26","en":"Thanks to the metric, we can measure the length of each path, and by comparing them, find the ant which has travelled the shortest path.","zh":"由于有了衡量标准,我们可以测量每一条路径的长度,并通过比较它们,找到走过最短道路的蚂蚁。"},{"s":217060,"e":224060,"ts":"03:37","en":"If we imagine that we have tested the infinity of possible routes, we are now able to determine the shortest path.","zh":"如果我们想象我们已经测试了可能路线的无限性,我们现在能够确定最短的道路。"},{"s":224060,"e":233060,"ts":"03:44","en":"The optimal path to get from A to B. This path determines the distance between the two points.","zh":"从 A 到 B 的最佳路径。 此路径决定两个点之间的距离 。"},{"s":233060,"e":238820,"ts":"03:53","en":"This type of trajectory is called a geodesic.","zh":"这种轨道被称为大地测量。"},{"s":238820,"e":246820,"ts":"03:58","en":"It is the generalization of a straight line, a trajectory along which one walks one foot in front of the other.","zh":"这条直线是一条直线的概括,一条轨道,一个人在另一条直径前面走一脚。"},{"s":246820,"e":254820,"ts":"04:06","en":"Each step takes us forward along the same direction as the previous step. We never stray off course.","zh":"每一步都使我们沿着前一步的同一方向前进,我们从不偏离航向。"},{"s":254820,"e":264610,"ts":"04:14","en":"On the surface of a plane, geodesics are simply straight lines. That's why we can measure distances with a ruler.","zh":"在平面表面,大地测量只是直线。所以我们可以用尺测量距离。"},{"s":264610,"e":272610,"ts":"04:24","en":"When connecting two points, visiting a third point that is not aligned with the other two will always require a longer travel time.","zh":"在连接两个点时,访问与其它两个点不相符的第三个点时,总是需要更长的旅行时间。"},{"s":273610,"e":282020,"ts":"04:33","en":"We call this the triangle inequality. On the surface of a sphere, the geodesics are known as great circles.","zh":"我们称之为三角不平等。在球体表面,大地测量学被称为大圆圈。"},{"s":282020,"e":291020,"ts":"04:42","en":"They cover the greatest possible circumference. On Earth, for example, lines of longitude are geodesics.","zh":"它们覆盖了尽可能大的范围。例如,在地球上,经度线是大地测量学的。"},{"s":291020,"e":299020,"ts":"04:51","en":"A flight from Rome to Copenhagen will only be as short as possible when following this precise curve.","zh":"从罗马飞往哥本哈根的航班在遵循这一精确曲线时,将尽可能短。"},{"s":299020,"e":308020,"ts":"04:59","en":"On the other hand, apart from the equator, lines of latitude are not geodesics. They are not great circles on the sphere.","zh":"另一方面,除了赤道以外,纬度线不是大地测量学,它们并不是球体上的极大圆环。"},{"s":308020,"e":318660,"ts":"05:08","en":"To connect two points at the same latitude, such as Paris and Quebec, there is a faster path.","zh":"连接同一纬度的两个点,如巴黎和魁北克,有一个更快的道路。"},{"s":318660,"e":325660,"ts":"05:18","en":"The field of differential geometry has developed a whole variety of tools to characterize the curvature of a surface.","zh":"差异几何领域开发了各种工具,以描述表面曲线的特点。"},{"s":325660,"e":331660,"ts":"05:25","en":"One of the most important tools is the so-called curvature tensor.","zh":"最重要的工具之一是所谓的曲率高压。"},{"s":331660,"e":338660,"ts":"05:31","en":"It is an object which expresses how geodesics evolve compared to each other.","zh":"它是一个表达大地测量学如何相互演变的物体。"},{"s":338660,"e":348660,"ts":"05:38","en":"It measures the curvature of a geometry because the more curvature there is, the faster the geodesics will converge or diverge from each other.","zh":"它测量几何的曲率 因为曲率越高 大地测量学会越快相聚或不同"},{"s":348660,"e":354660,"ts":"05:48","en":"And conversely, the flatter the surface, the more its geodesics tend to stay parallel to each other.","zh":"反过来说,表层的平面 其大地测量学越是相互平行"},{"s":354660,"e":363770,"ts":"05:54","en":"When looking at more complex surfaces, geodesics can take interesting shapes.","zh":"当观察更复杂的表面时,大地测量学可以产生有趣的形状。"},{"s":363770,"e":372300,"ts":"06:03","en":"On the surface of this funnel, for example, straight lines seem to be deflected near the central hole.","zh":"例如,在这个漏斗表面, 直线似乎偏向了中央洞附近。"},{"s":372300,"e":383130,"ts":"06:12","en":"When viewed from above, these geodesics appear to bend in a manner very similar to how light rays are lensed near a black hole.","zh":"从上面看,这些大地测量学的弯曲方式 与黑洞附近光线的透镜非常相似。"},{"s":383130,"e":390050,"ts":"06:23","en":"And this is not a coincidence. Light rays get bent for the same reason.","zh":"这不是巧合,光线也因为同样的原因被弯曲"},{"s":390050,"e":398050,"ts":"06:30","en":"The universe in which we live is not a two-dimensional surface. It is a hyper surface with four dimensions.","zh":"我们所生活的宇宙不是二维表面,而是具有四个维度的超高表层。"},{"s":398050,"e":405050,"ts":"06:38","en":"Three dimensions of space and one of time. This is space-time.","zh":"空间的三维和时间的一度。这是时空的。"},{"s":405050,"e":412050,"ts":"06:45","en":"All objects in the universe evolve through space-time in the same way that the ant walks on the sphere.","zh":"宇宙中的所有物体 都随着时空的演变 和蚂蚁在球体上行走的方式一样"},{"s":412050,"e":421050,"ts":"06:52","en":"But in space-time, the distance between two events is not only their distance through space, but also through time.","zh":"但在时空,两次事件之间的距离不仅是它们穿越空间的距离,而且包括时间。"},{"s":422050,"e":428050,"ts":"07:02","en":"When they don't experience any force, bodies in the universe have no reason to turn one way or the other.","zh":"当它们没有经历任何力量时 宇宙中的人体就没有理由 以某种方式改变"},{"s":428050,"e":434050,"ts":"07:08","en":"Objects have a tendency to move straight ahead, and they hence follow geodesics.","zh":"物体有直行前进的倾向,因此它们遵循大地测量。"},{"s":434050,"e":438050,"ts":"07:14","en":"They move along straight lines within the geometry of the universe.","zh":"它们沿着直线移动 在宇宙的几何结构内"},{"s":438050,"e":448130,"ts":"07:18","en":"Our universe is very diverse, and the metric that describes its geometry can vary from place to place.","zh":"我们的宇宙非常多样化, 描述其几何的测量标准 各地可能各不相同。"},{"s":448130,"e":454500,"ts":"07:28","en":"In an empty region of the universe, space-time is almost flat.","zh":"在宇宙的空旷区域,空间时间几乎是平坦的。"},{"s":454500,"e":462500,"ts":"07:34","en":"The geodesics are the usual straight lines, and all objects or light rays move straight ahead at a constant speed.","zh":"大地测量是通常的直线, 所有物体或光线都以恒定速度直向前移动。"},{"s":462500,"e":470500,"ts":"07:42","en":"We call this the Minkowski metric. It is the type of space-time described by special relativity.","zh":"我们称之为Minkowski衡量标准,这是以特殊相对论描述的时空类型。"},{"s":470500,"e":478500,"ts":"07:50","en":"Any motion between two objects is relative. All positions and directions are equivalent.","zh":"两个对象之间的任何运动都是相对的。所有位置和方向都相等。"},{"s":478500,"e":483500,"ts":"07:58","en":"However, close to a massive body, space-time gets bent.","zh":"然而,接近一个巨大的身体 时空就会弯曲"},{"s":483500,"e":490500,"ts":"08:03","en":"For bodies that are spherical, isolated, and stable over time, we consider the Schwarzschild metric.","zh":"对于球体、孤立和稳定的身体 随着时间的推移,我们考虑Schwarzschild的衡量标准。"},{"s":490500,"e":495500,"ts":"08:10","en":"It is the most common metric in general relativity.","zh":"一般来说,它是相对性方面最常见的衡量标准。"},{"s":495500,"e":500500,"ts":"08:15","en":"The geodesics correspond to deflected trajectories or orbits.","zh":"大地测量学对应偏向轨道或轨道。"},{"s":500500,"e":509500,"ts":"08:20","en":"If the moon revolves around the earth, it is because it follows a straight line, a geodesic, but within a curved geometry,","zh":"如果月球绕着地球旋转, 这是因为它沿着一条直线,大地测量, 但是在曲线的几何内,"},{"s":509500,"e":514010,"ts":"08:29","en":"somewhat like the funnel we saw before.","zh":"有点像我们以前看到的漏斗"},{"s":514010,"e":527140,"ts":"08:34","en":"The only difference is that this geodesic is not only aligned through space, it also describes the trajectory through time.","zh":"唯一的区别是,大地测量不仅通过空间对齐,还描述了时间的轨迹。"},{"s":527140,"e":531140,"ts":"08:47","en":"When an apple falls off a tree from a previously motionless state,","zh":"当苹果从树上掉下的时候,"},{"s":531140,"e":537140,"ts":"08:51","en":"it is because the curvature of space-time bends the geodesics between time and space.","zh":"这是因为时空的曲率弯曲了时间和空间之间的大地测量。"},{"s":537140,"e":543140,"ts":"08:57","en":"The apple, which was moving only through time, gets gradually deflected off course.","zh":"苹果只是经过一段时间才移动, 逐渐偏离方向。"},{"s":543140,"e":548140,"ts":"09:03","en":"Its flow through time gets converted into a speed through space.","zh":"其流经时间的流转 被转换成一个通过空间的速度"},{"s":548140,"e":558950,"ts":"09:08","en":"When the attracting body is extremely massive, like a static black hole, the Schwarzschild metric describes a sort of hole,","zh":"当吸引体非常大, 就像一个静态黑洞, 施瓦兹柴尔德的指数描述一个孔,"},{"s":558950,"e":563950,"ts":"09:18","en":"a spherical region of space much like the hole in a funnel.","zh":"空间球体区域 与漏斗洞相似"},{"s":563950,"e":565950,"ts":"09:23","en":"The metric seems broken.","zh":"公尺似乎坏了"},{"s":565950,"e":571950,"ts":"09:25","en":"This is called the Schwarzschild radius, or more commonly the event horizon.","zh":"叫做\"斯瓦兹柴尔德半径\", 或更常见的就是事件地平线。"},{"s":571950,"e":576950,"ts":"09:31","en":"As seen from outside, no object can cross this horizon.","zh":"从外部看,没有物体能够跨越这个地平线。"},{"s":576950,"e":586390,"ts":"09:36","en":"That said, it is just an illusion, like the North Pole on Earth, which breaks apart when we flatten it on a map.","zh":"说到这里,这只是一种幻觉,就像地球上的北极一样,当我们把它平整在地图上时,它就会分裂。"},{"s":586390,"e":589390,"ts":"09:46","en":"An apparent singularity.","zh":"明显的独一性"},{"s":590390,"e":597390,"ts":"09:50","en":"In reality, from the point of view of a spacecraft approaching the black hole, it is possible to cross this region.","zh":"实际上,从航天器接近黑洞的角度来看,有可能穿越这一地区。"},{"s":597390,"e":604390,"ts":"09:57","en":"Unfortunately, the spacecraft would end up bumping into another singularity, a real one this time,","zh":"不幸的是,航天器最终会撞上另一个奇点, 这次真的,"},{"s":604390,"e":614040,"ts":"10:04","en":"a point where the curvature becomes infinite and that modern science cannot yet understand.","zh":"在一个点上,曲线变得无限,现代科学还无法理解。"},{"s":614040,"e":620040,"ts":"10:14","en":"Finally, there exists a multitude of other places in the universe with more complex metrics,","zh":"最后,宇宙中还有其他许多地方 具有更复杂的测量指标"},{"s":620040,"e":628040,"ts":"10:20","en":"such as the Kerr metric, which describes black holes with a very fast rotation, with a central ring singularity,","zh":"例如Kerr 度量,它描述黑洞的旋转速度非常快, 中央环奇数,"},{"s":628040,"e":639040,"ts":"10:28","en":"or the FLRW metric, which stands for Friedman, Lomet, Roberts and Walker, which describes an approximation of space-time on a large scale.","zh":"或FLRW衡量标准,即弗里德曼、洛梅特、罗伯茨和沃克的测量标准,它说明大规模接近时空的情况。"},{"s":639040,"e":647040,"ts":"10:39","en":"By expressing the curvature and the expansion of the entire cosmos, it is at the origin of the Big Bang Theory.","zh":"通过表达整个宇宙的曲线和扩张,它就是大爆炸理论的起源。"}];
+var TERMS={"stray":{"zh":"n. 走失的家畜, 浪子","def":"","cat":"六级","ph":"strei","cats":["六级","托福","GRE"]},"journey":{"zh":"n. 旅程, 旅行, 行程","def":"","cat":"四级","ph":"'dʒә:ni","cats":["四级","六级","考研"]},"positions":{"zh":"n. 定位；位置（position的复数）","def":"","cat":"雅思","ph":"","cats":["雅思"]},"flatten":{"zh":"vi. 使...不活跃, 变平","def":"","cat":"六级","ph":"'flætn","cats":["六级","GRE"]},"three-dimensional":{"zh":"a. 三维的, 立体的, 真实的","def":"","cat":"托福","ph":"θri:'dimenʃәnәl","cats":["托福"]},"bang":{"zh":"n. 重击, 突然巨响, 刘海","def":"","cat":"四级","ph":"bæŋ","cats":["四级","六级","考研","雅思","托福"]},"triangle":{"zh":"n. 三角形, 三个一组, 三角关系","def":"","cat":"四级","ph":"'traiæŋgl","cats":["四级","六级","考研","雅思","托福"]},"rome":{"zh":"n. 罗马","def":"","cat":"专八","ph":"rәum","cats":["专八"]},"diverge":{"zh":"vi. 分歧, 岔开","def":"","cat":"六级","ph":"dai'vә:dʒ","cats":["六级","托福","GRE"]},"latitude":{"zh":"n. 纬度, 范围","def":"","cat":"六级","ph":"'lætitju:d","cats":["六级","考研","雅思","托福","GRE"]},"tools":{"zh":"n. 工具, 工具菜单；工具箱（tool的复数形式）","def":"","cat":"雅思","ph":"tu:lz","cats":["雅思"]},"static":{"zh":"n. 静电, 静电干扰","def":"","cat":"四级","ph":"'stætik","cats":["四级","六级","考研","雅思","托福","GRE"]},"illusion":{"zh":"n. 幻影, 错觉, 幻想","def":"","cat":"四级","ph":"i'lju:ʒәn","cats":["四级","六级","考研","雅思","托福","GRE"]},"constant":{"zh":"n. 常数, 恒量","def":"","cat":"四级","ph":"'kɒnstәnt","cats":["四级","六级","考研","雅思","托福","GRE"]},"ruler":{"zh":"n. 统治者, 管理者, 尺, 直尺","def":"","cat":"四级","ph":"'ru:lә","cats":["四级","六级","考研"]},"radius":{"zh":"n. 半径, 范围, 辐射光线","def":"","cat":"四级","ph":"'reidiәs","cats":["四级","六级","考研","雅思","托福","GRE"]},"rotation":{"zh":"n. 旋转, 循环, 轮流","def":"","cat":"四级","ph":"rәu'teiʃәn","cats":["四级","六级","托福"]},"horizon":{"zh":"n. 地平线, 眼界, (天)视地平","def":"","cat":"四级","ph":"hә'raizәn","cats":["四级","六级","考研","雅思","托福"]},"origin":{"zh":"n. 起源, 起因, 出身, 开端","def":"","cat":"四级","ph":"'ɒridʒin","cats":["四级","六级","考研","雅思","托福"]},"places":{"zh":"n. 地点；位置；[数]位数（place的复数）","def":"","cat":"雅思","ph":"","cats":["雅思"]},"infinity":{"zh":"n. 无限大, 无限","def":"","cat":"六级","ph":"in'finiti","cats":["六级","GRE"]},"measured":{"zh":"a. 整齐的, 慎重的, 基于标准的","def":"","cat":"GRE","ph":"'meʒәd","cats":["GRE"]},"funnel":{"zh":"n. 漏斗, 漏斗状的东西, 烟囱","def":"","cat":"雅思","ph":"'fʌnl","cats":["雅思","托福"]},"precise":{"zh":"a. 精确的, 严谨的, 明确的","def":"","cat":"四级","ph":"pri'sais","cats":["四级","六级","考研","雅思","托福","GRE"]},"parallel":{"zh":"n. 平行, 对比, 相匹敌之物","def":"","cat":"四级","ph":"'pærәlel","cats":["四级","六级","考研","雅思","托福","GRE"]},"isolated":{"zh":"a. 孤立的, 孤零零的","def":"","cat":"雅思","ph":"'aisәleitid","cats":["雅思","托福"]},"unfortunately":{"zh":"adv. 恐怕, 不幸的是","def":"","cat":"四级","ph":"ʌn'fɔ:tjjnәtli","cats":["四级","六级","考研","托福"]},"bend":{"zh":"vi. 变弯曲, 屈服","def":"","cat":"四级","ph":"bend","cats":["四级","六级","考研","雅思","托福","GRE"]},"relativity":{"zh":"n. 有关系, 相关性, 相对性","def":"","cat":"四级","ph":".relә'tiviti","cats":["四级","六级","考研"]},"flat":{"zh":"a. 平坦的, 单调的, 无力的, 浅的, 萧条的, 干脆的, 无聊的","def":"","cat":"四级","ph":"flæt","cats":["四级","六级","考研","雅思","托福"]},"characterize":{"zh":"vt. 描绘...的特性, 刻划...的性格","def":"","cat":"四级","ph":"'kærәktәraiz","cats":["四级","六级","考研","雅思","托福","GRE"]},"sphere":{"zh":"n. 球, 球面, 球体, 天体, 地球仪, 范围","def":"","cat":"四级","ph":"sfiә","cats":["四级","六级","考研","雅思","托福"]},"flatter":{"zh":"vt. 奉承, 阿谀, 使高兴","def":"","cat":"六级","ph":"'flætә","cats":["六级","考研","雅思","托福","GRE"]},"pole":{"zh":"n. 波兰人, 极点, 磁极, 电极, 杆, 竿, 相反的极端","def":"","cat":"四级","ph":"pәul","cats":["四级","六级","考研","雅思","托福"]},"hence":{"zh":"adv. 因此, 从此","def":"","cat":"四级","ph":"hens","cats":["四级","六级","考研","雅思","托福"]},"grid":{"zh":"n. 格子, 栅格","def":"","cat":"雅思","ph":"grid","cats":["雅思"]},"differential":{"zh":"a. 差别的, 特异的, 微分的","def":"","cat":"专八","ph":"difә'renʃәl","cats":["专八"]},"circumference":{"zh":"n. 圆周, 周缘, 胸围","def":"","cat":"四级","ph":"sә'kʌmfәrәns","cats":["四级","六级","考研","雅思","托福","GRE"]},"moving":{"zh":"a. 动人的, 令人感动的, 鼓动的, 原动的, [无比较级]活动的, 转动的","def":"","cat":"专八","ph":"'mu:viŋ","cats":["专八"]},"apparent":{"zh":"a. 清晰可见的, 显然的, 表面上的","def":"","cat":"四级","ph":"ә'pærәnt","cats":["四级","六级","考研","雅思"]},"diverse":{"zh":"a. 不同的, 变化多的","def":"","cat":"四级","ph":"dai'vә:s","cats":["四级","六级","考研","雅思","托福","GRE"]},"equator":{"zh":"n. 赤道","def":"","cat":"六级","ph":"i'kweitә","cats":["六级","考研","雅思","托福","GRE"]},"conversely":{"zh":"adv. 相反, 逆, 颠倒, 反题, 反","def":"","cat":"四级","ph":"'kɔnv\\\\\\\\:sli","cats":["四级","六级","考研","雅思"]},"geometry":{"zh":"n. 几何学","def":"","cat":"四级","ph":"dʒi'ɒmәtri","cats":["四级","六级","考研","雅思","托福"]},"steps":{"zh":"n. （楼外的）台阶；步伐；步幅；步数","def":"","cat":"雅思","ph":"","cats":["雅思"]},"multitude":{"zh":"n. 多数, 群众","def":"","cat":"六级","ph":"'mʌltitju:d","cats":["六级","考研","雅思","托福","GRE"]},"so-called":{"zh":"a. 所谓的, 号称的","def":"","cat":"四级","ph":"","cats":["四级","六级"]},"infinite":{"zh":"n. 无限, 神","def":"","cat":"四级","ph":"'infinit","cats":["四级","六级","考研","雅思"]},"equivalent":{"zh":"n. 同等物, 等价物, 相等物","def":"","cat":"四级","ph":"i'kwivәlәnt","cats":["四级","六级","考研","雅思","托福","GRE"]},"previously":{"zh":"adv. 先, 先前, 以前, 前, (非正式)过早, 过急, 在前, 在...以前, 在先","def":"","cat":"四级","ph":"'pri:vju:sli","cats":["四级","六级"]},"approximation":{"zh":"n. 接近, 近似值","def":"","cat":"SAT","ph":"ә.prɒksi'meiʃәn","cats":["SAT"]},"spherical":{"zh":"a. 球的, 球面的, 球状的, 天体的","def":"","cat":"六级","ph":"'sferikl","cats":["六级","托福"]},"tendency":{"zh":"n. 趋向, 倾向","def":"","cat":"四级","ph":"'tendәnsi","cats":["四级","六级","考研","雅思","托福"]},"tangent":{"zh":"a. 接触的, 正切的, 离题的","def":"","cat":"专八","ph":"'tændʒәnt","cats":["专八"]},"approaching":{"zh":"v. 进场；侵入；接近（approach的ing形式）","def":"","cat":"托福","ph":"","cats":["托福"]},"optimal":{"zh":"a. 最佳的, 最理想的","def":"","cat":"六级","ph":"'ɒptimәl","cats":["六级","托福"]},"longitude":{"zh":"n. 经度, 经线","def":"","cat":"六级","ph":"'lɒndʒitju:d","cats":["六级","考研","雅思","托福"]},"coincidence":{"zh":"n. 巧合, 同时发生","def":"","cat":"六级","ph":"kәu'insidәns","cats":["六级","考研","雅思","托福"]},"correspond":{"zh":"vi. 符合, 通信, 相当","def":"","cat":"四级","ph":".kɒri'spɒnd","cats":["四级","六级","考研","雅思","托福"]},"gradually":{"zh":"adv. 逐渐地","def":"","cat":"四级","ph":"'grædʒuәli","cats":["四级","六级"]},"saw":{"zh":"n. 锯子, 谚语","def":"","cat":"四级","ph":"sɒ:","cats":["四级","六级","考研"]},"generalization":{"zh":"n. 一般化, 普遍化, 概括","def":"","cat":"六级","ph":",dʒenәrәlai'zeiʃәn","cats":["六级","托福"]},"metric":{"zh":"a. 公尺的, 公制的, 计量的","def":"","cat":"四级","ph":"'metrik","cats":["四级","六级","考研","雅思"]},"converge":{"zh":"vi. 聚合, 集中于一点","def":"","cat":"六级","ph":"kәn'vә:dʒ","cats":["六级","雅思","托福","GRE"]},"commonly":{"zh":"adv. 一般, 普通, 通常","def":"","cat":"四级","ph":"'kɒmәnli","cats":["四级","六级"]},"usual":{"zh":"a. 平常的, 通常的","def":"","cat":"四级","ph":"'ju:ʒuәl","cats":["四级","六级","考研","雅思"]},"motionless":{"zh":"a. 不动的, 静止的","def":"","cat":"托福","ph":"'mәuʃәnlis","cats":["托福"]},"relative":{"zh":"n. 亲戚, 关系词","def":"","cat":"四级","ph":"'relәtiv","cats":["四级","六级","考研"]},"measures":{"zh":"n. 措施；层组（measure的复数）","def":"","cat":"托福","ph":"","cats":["托福"]},"stable":{"zh":"n. 马房, 牛棚","def":"","cat":"四级","ph":"'steibl","cats":["四级","六级","考研","托福"]},"mathematical":{"zh":"a. 数学的, 精确的","def":"","cat":"四级","ph":".mæθә'mætikl","cats":["四级","六级","考研"]},"spacecraft":{"zh":"n. 航天飞船","def":"","cat":"四级","ph":"'speiskræft","cats":["四级","六级","考研","托福"]},"inequality":{"zh":"n. 不平等, 不同, 不平坦, 不平均","def":"","cat":"专八","ph":".ini'kwɒliti","cats":["专八"]},"trajectory":{"zh":"n. 轨道, 弹道, 轨线","def":"","cat":"GRE","ph":"trә'dʒektri","cats":["GRE"]},"definition":{"zh":"n. 定义, 精确度, 清晰度","def":"","cat":"四级","ph":".defi'niʃәn","cats":["四级","六级","考研","托福","GRE"]},"evolve":{"zh":"vi. 进展, 进化, 展开","def":"","cat":"四级","ph":"i'vɒlv","cats":["四级","六级","考研","托福","GRE"]},"expansion":{"zh":"n. 扩充, 开展, 膨胀","def":"","cat":"四级","ph":"ik'spænʃәn","cats":["四级","六级","考研","雅思","托福"]},"universe":{"zh":"n. 宇宙, 星系, (思想等)范围","def":"","cat":"四级","ph":"'ju:nivә:s","cats":["四级","六级","考研","托福"]},"singularity":{"zh":"n. 奇异, 突出, 稀有","def":"","cat":"GRE","ph":".siŋgju'læriti","cats":["GRE"]},"broken":{"zh":"a. 坏掉的, 打破的, 断掉的","def":"","cat":"四级","ph":"'brәukәn","cats":["四级"]},"intrinsic":{"zh":"a. 本质的, 原有的, 真正的","def":"","cat":"六级","ph":"in'trinsik","cats":["六级","考研","雅思","托福"]},"arc":{"zh":"n. 弧, 弧形, 弓形, 弧光","def":"","cat":"六级","ph":"ɑ:k","cats":["六级","雅思","托福"]},"remains":{"zh":"n. 剩余物, 废墟, 残余","def":"","cat":"四级","ph":"ri'meins","cats":["四级","六级","考研","GRE"]},"bent":{"zh":"a. 弯曲的, 决心的","def":"","cat":"雅思","ph":"bent","cats":["雅思","托福","GRE"]},"ant":{"zh":"n. 蚂蚁","def":"","cat":"四级","ph":"ænt","cats":["四级","考研"]},"curve":{"zh":"n. 曲线, 弯曲, 曲线球","def":"","cat":"四级","ph":"kә:v","cats":["四级","六级","考研","雅思","托福"]},"cosmos":{"zh":"n. 宇宙, 秩序, 和谐, 大波斯菊","def":"","cat":"六级","ph":"'kɔzmɔs","cats":["六级","GRE"]}};
+</script>
+<script>
+(function () {
+  "use strict";
+  var LS = "nn01-micrograd";
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(LS + ":" + k); localStorage.setItem(LS + ":" + k, v); } catch (e) { return null; } }
+
+  var rows = Array.prototype.slice.call(document.querySelectorAll(".row"));
+  var player = document.getElementById("player");
+  var tooltip = document.getElementById("tip");
+  var prog = document.getElementById("prog");
+  var hits = document.getElementById("hits");
+  var current = -1;
+  var shownAt = 0;
+  var live = false;            // karaoke follow is armed
+  var auto = store("auto") !== "0";
+  var rate = parseFloat(store("rate") || "1");
+
+  /* ---------------- playback ---------------- */
+  function seek(i, play) {
+    if (i < 0 || i >= rows.length) return;
+    if (current >= 0 && rows[current]) rows[current].classList.remove("active");
+    current = i;
+    rows[i].classList.add("active");
+    player.currentTime = DATA[i].s / 1000 + 0.01;
+    if (play !== false) { player.play().catch(function () {}); live = true; }
+    if (!inView(rows[i])) rows[i].scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  function inView(el) {
+    var r = el.getBoundingClientRect();
+    return r.top >= 60 && r.bottom <= (window.innerHeight || 800);
+  }
+
+  function toggleRow(i) {
+    if (live && current === i && !player.paused) { stop(); return; }
+    seek(i);
+  }
+
+  function stop() {
+    player.pause();
+    live = false;
+    if (current >= 0 && rows[current]) rows[current].classList.remove("active");
+    current = -1;
+  }
+
+  function idxAt(t) {
+    var ms = t * 1000, lo = 0, hi = DATA.length - 1, best = 0;
+    while (lo <= hi) {
+      var mid = (lo + hi) >> 1;
+      if (DATA[mid].s <= ms) { best = mid; lo = mid + 1; } else { hi = mid - 1; }
+    }
+    return best;
+  }
+
+  player.addEventListener("timeupdate", function () {
+    var t = player.currentTime;
+    prog.style.width = (player.duration ? (t / player.duration * 100) : 0) + "%";
+    if (!live) return;
+    var i = idxAt(t);
+    if (i === current) return;
+    if (!auto) { stop(); return; }          // single-sentence mode: pause at boundary
+    if (rows[current]) rows[current].classList.remove("active");
+    current = i;
+    rows[i].classList.add("active");
+    if (!inView(rows[i])) rows[i].scrollIntoView({ behavior: "smooth", block: "center" });
+    store("last", i);
+  });
+
+  player.addEventListener("ended", stop);
+  player.playbackRate = rate;
+  document.getElementById("rate").value = String(rate);
+
+  /* ---------------- row wiring ---------------- */
+  rows.forEach(function (row, i) {
+    row.querySelector(".sent").addEventListener("click", function (ev) {
+      if (ev.target.closest("mark.term")) return;
+      toggleRow(i);
+    });
+    row.querySelector(".play").addEventListener("click", function (ev) {
+      ev.stopPropagation();
+      toggleRow(i);
+    });
+  });
+
+  /* ---------------- term tooltips ---------------- */
+  function showTip(el, key) {
+    var t = TERMS[key];
+    if (!t) return;
+    tooltip.innerHTML = '<span class="w">' + key + '</span> <span class="ph">' +
+      (t.ph ? "[" + t.ph + "]" : "") + '</span><span class="df">' + (t.zh ? "<b>" + t.zh + "</b> " : "") + (t.def || "") + '</span>';
+    tooltip.classList.add("show");
+    var r = el.getBoundingClientRect();
+    var w = tooltip.offsetWidth, h = tooltip.offsetHeight;
+    var left = Math.min(Math.max(8, r.left), window.innerWidth - w - 8);
+    var top = r.top - h - 8;
+    if (top < 8) top = r.bottom + 8;
+    tooltip.style.left = left + "px";
+    tooltip.style.top = top + "px";
+    shownAt = Date.now();
+  }
+  function hideTip() { tooltip.classList.remove("show"); }
+  document.addEventListener("mouseover", function (e) {
+    var m = e.target.closest("mark[data-t]");
+    if (m) showTip(m, m.getAttribute("data-t"));
+  });
+  document.addEventListener("mouseout", function (e) { if (e.target.closest("mark[data-t]")) hideTip(); });
+  // scrolling the mark into view fires a scroll event right after mouseover;
+  // ignore those or the tooltip would vanish instantly
+  document.addEventListener("scroll", function () {
+    if (Date.now() - shownAt > 700) hideTip();
+  }, { passive: true });
+
+  /* ---------------- settings ---------------- */
+  function setZh(on) {
+    document.body.setAttribute("data-zh", on ? "on" : "off");
+    document.getElementById("b-zh").classList.toggle("on", on);
+    store("zh", on ? "1" : "0");
+  }
+  function setAuto(on) {
+    auto = on;
+    document.getElementById("b-auto").classList.toggle("on", on);
+    store("auto", on ? "1" : "0");
+  }
+  var fonts = ["s", "m", "l", "xl"];
+  function setFont(f) {
+    document.body.setAttribute("data-font", f);
+    store("font", f);
+  }
+
+  document.getElementById("b-zh").addEventListener("click", function () {
+    setZh(document.body.getAttribute("data-zh") !== "on");
+  });
+  document.getElementById("b-auto").addEventListener("click", function () { setAuto(!auto); });
+  document.getElementById("b-theme").addEventListener("click", function () {
+    var d = document.documentElement.getAttribute("data-theme") === "dark";
+    document.documentElement.setAttribute("data-theme", d ? "light" : "dark");
+    store("theme", d ? "light" : "dark");
+  });
+  document.getElementById("b-font").addEventListener("click", function () {
+    var cur = document.body.getAttribute("data-font");
+    setFont(fonts[(fonts.indexOf(cur) + 1) % fonts.length]);
+  });
+  document.getElementById("b-top").addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+  document.getElementById("rate").addEventListener("change", function () {
+    rate = parseFloat(this.value); player.playbackRate = rate; store("rate", this.value);
+  });
+
+  setZh(store("zh") !== "0");
+  setAuto(auto);
+  setFont(store("font") || "m");
+  if (store("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");
+
+  /* ---------------- search ---------------- */
+  var q = document.getElementById("q");
+  var timer = null;
+  q.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      var v = q.value.trim().toLowerCase();
+      var n = 0;
+      rows.forEach(function (r, i) {
+        var hit = !v || (DATA[i].en + " " + DATA[i].zh).toLowerCase().indexOf(v) >= 0;
+        r.hidden = !hit;
+        r.classList.toggle("hit", !!v && hit);
+        if (hit) n++;
+      });
+      hits.textContent = v ? ("找到 " + n + " 句") : "就绪";
+    }, 130);
+  });
+  q.addEventListener("keydown", function (e) { if (e.key === "Escape") { q.value = ""; q.dispatchEvent(new Event("input")); q.blur(); } });
+
+  /* ---------------- keyboard ---------------- */
+  document.addEventListener("keydown", function (e) {
+    if (e.target.tagName === "INPUT" || e.target.tagName === "SELECT") return;
+    var k = e.key;
+    if (k === " ") { e.preventDefault(); if (player.paused) toggleRow(current < 0 ? 0 : current); else stop(); }
+    else if (k === "t" || k === "T") setZh(document.body.getAttribute("data-zh") !== "on");
+    else if (k === "c" || k === "C") setAuto(!auto);
+    else if (k === "ArrowDown") { e.preventDefault(); seek(Math.min(rows.length - 1, (current < 0 ? -1 : current) + 1)); }
+    else if (k === "ArrowUp") { e.preventDefault(); seek(Math.max(0, (current < 0 ? 1 : current) - 1)); }
+    else if (k === "Escape") stop();
+  });
+
+  /* ---------------- resume ---------------- */
+  var last = parseInt(store("last") || "-1", 10);
+  if (last > 0 && last < rows.length) {
+    var chip = document.getElementById("resume-chip");
+    chip.hidden = false;
+    document.getElementById("resume-t").textContent = DATA[last].ts;
+    chip.style.cursor = "pointer";
+    chip.addEventListener("click", function () { seek(last); });
+  }
+})();
+
+</script>
+</body>
+</html>
